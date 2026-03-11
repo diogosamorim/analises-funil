@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Análise de Funil — Presentes Comestíveis</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0b0c10;
+      --surface:   #13151c;
+      --surface2:  #1a1d26;
+      --border:    rgba(255,255,255,0.07);
+      --gold:      #c9a84c;
+      --gold-dim:  rgba(201,168,76,0.15);
+      --gold-glow: rgba(201,168,76,0.08);
+      --green:     #4dba87;
+      --red:       #e05858;
+      --blue:      #5b9bd5;
+      --text:      #e8e8e8;
+      --muted:     #7a7f8e;
+      --radius:    12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── GRAIN OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      padding: 72px 0 60px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #fff;
+      max-width: 700px;
+    }
+
+    .header h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .header-meta {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .header-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .header-meta-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .header-meta-value {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .divider {
+      width: 1px;
+      height: 36px;
+      background: var(--border);
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 40px;
+      line-height: 1.2;
+    }
+
+    /* ── KPI CARDS ── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .kpi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .kpi-card:hover { border-color: rgba(201,168,76,0.25); }
+
+    .kpi-card.highlight {
+      border-color: rgba(201,168,76,0.3);
+      background: linear-gradient(135deg, var(--surface) 60%, var(--gold-glow));
+    }
+
+    .kpi-card.danger { border-color: rgba(224,88,88,0.25); }
+
+    .kpi-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .kpi-value {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .kpi-value.gold { color: var(--gold); }
+    .kpi-value.green { color: var(--green); }
+    .kpi-value.red { color: var(--red); }
+
+    .kpi-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── CHART WRAPPER ── */
+    .chart-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+
+    .chart-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+    }
+
+    .chart-canvas-wrap {
+      position: relative;
+    }
+
+    /* ── TWO COL ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+
+    /* ── TABLE ── */
+    .table-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead tr {
+      background: var(--surface2);
+    }
+
+    th {
+      padding: 14px 20px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 14px 20px;
+      font-size: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .td-month {
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    .td-good { color: var(--green); font-weight: 500; }
+    .td-warn { color: var(--gold); font-weight: 500; }
+    .td-bad  { color: var(--red);  font-weight: 500; }
+    .td-muted { color: var(--muted); }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-good { background: rgba(77,186,135,0.12); color: var(--green); }
+    .badge-warn { background: rgba(201,168,76,0.12); color: var(--gold); }
+    .badge-bad  { background: rgba(224,88,88,0.12);  color: var(--red); }
+
+    /* ── DIAGNOSIS CARDS ── */
+    .diag-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .diag-grid { grid-template-columns: 1fr; }
+    }
+
+    .diag-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+
+    .diag-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--gold-dim);
+      margin-bottom: 12px;
+      -webkit-text-stroke: 1px rgba(201,168,76,0.3);
+      color: transparent;
+    }
+
+    .diag-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .diag-body {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .diag-stat {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .diag-stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .diag-stat-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .diag-stat-val.red { color: var(--red); }
+    .diag-stat-val.gold { color: var(--gold); }
+
+    .diag-stat-lbl {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .arrow-right {
+      font-size: 18px;
+      color: var(--border);
+      align-self: center;
+    }
+
+    /* ── PRICE IMPACT ── */
+    .price-grid {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr;
+      gap: 0;
+      align-items: stretch;
+    }
+
+    @media (max-width: 700px) {
+      .price-grid { grid-template-columns: 1fr; }
+      .price-divider { display: none; }
+    }
+
+    .price-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+
+    .price-card.after {
+      border-color: rgba(224,88,88,0.2);
+      background: linear-gradient(135deg, var(--surface) 60%, rgba(224,88,88,0.04));
+    }
+
+    .price-period {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .price-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .price-metrics {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .price-metric {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      background: var(--surface2);
+      border-radius: 8px;
+      gap: 12px;
+    }
+
+    .price-metric-name {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .price-metric-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      text-align: right;
+    }
+
+    .price-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .price-divider-inner {
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, var(--border) 30%, var(--border) 70%, transparent);
+      position: relative;
+    }
+
+    .price-divider-inner::after {
+      content: '→';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--bg);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── ACTION PLAN ── */
+    .plan-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .plan-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 20px;
+      align-items: start;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .plan-item:hover {
+      border-color: rgba(201,168,76,0.2);
+      background: linear-gradient(90deg, var(--surface) 80%, var(--gold-glow));
+    }
+
+    .plan-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .plan-content {}
+
+    .plan-title {
+      font-weight: 600;
+      font-size: 15px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .plan-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .plan-tag {
+      flex-shrink: 0;
+    }
+
+    /* ── FUNNEL VISUAL ── */
+    .funnel-visual {
+      display: flex;
+      gap: 4px;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 20px 0 0;
+    }
+
+    .funnel-step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .funnel-bar-wrap {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .funnel-bar {
+      width: 80%;
+      border-radius: 4px 4px 0 0;
+      transition: height 0.8s ease;
+    }
+
+    .funnel-pct {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 6px;
+    }
+
+    .funnel-name {
+      font-size: 10px;
+      color: var(--muted);
+      text-align: center;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .footer-text {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate {
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .animate-1 { animation-delay: 0.05s; }
+    .animate-2 { animation-delay: 0.1s; }
+    .animate-3 { animation-delay: 0.15s; }
+    .animate-4 { animation-delay: 0.2s; }
+
+    /* ── HIGHLIGHT BOX ── */
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+
+    .highlight-box-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .highlight-box-body {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .highlight-box-body strong { color: var(--text); }
+
+    /* ── PRODUCT TABLE ── */
+    .prod-bar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .prod-bar-bg {
+      flex: 1;
+      height: 6px;
+      background: var(--surface2);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .prod-bar-fill {
+      height: 100%;
+      border-radius: 100px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     HEADER
+═════════════════════════════════════════════ -->
+<div class="container">
+  <header class="header animate">
+    <div class="header-eyebrow">Relatório de Performance</div>
+    <h1>Análise de Funil<br /><em>de Vendas</em></h1>
+    <div class="header-meta">
+      <div class="header-meta-item">
+        <span class="header-meta-label">Produto</span>
+        <span class="header-meta-value">Presentes Comestíveis</span>
+      </div>
+      <div class="divider"></div>
+      <div class="header-meta-item">
+        <span class="header-meta-label">Período</span>
+        <span class="header-meta-value">Nov/2025 — Fev/2026</span>
+      </div>
+      <div class="divider"></div>
+      <div class="header-meta-item">
+        <span class="header-meta-label">Canal</span>
+        <span class="header-meta-value">Meta Ads</span>
+      </div>
+      <div class="divider"></div>
+      <div class="header-meta-item">
+        <span class="header-meta-label">Data</span>
+        <span class="header-meta-value">Março 2026</span>
+      </div>
+    </div>
+  </header>
+</div>
+
+<!-- ════════════════════════════════════════════
+     RESUMO EXECUTIVO
+═════════════════════════════════════════════ -->
+<div class="container">
+  <section class="section">
+    <div class="section-label">01 — Resumo Executivo</div>
+    <div class="section-title">Os números que mais importam</div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card animate animate-1">
+        <div class="kpi-label">Melhor Mês</div>
+        <div class="kpi-value gold">R$ 29.741</div>
+        <div class="kpi-sub">Janeiro / 2026 — 149 vendas</div>
+      </div>
+      <div class="kpi-card danger animate animate-2">
+        <div class="kpi-label">Fevereiro / 2026</div>
+        <div class="kpi-value red">R$ 18.085</div>
+        <div class="kpi-sub">93 vendas — pior do período</div>
+      </div>
+      <div class="kpi-card animate animate-3">
+        <div class="kpi-label">Queda Jan → Fev</div>
+        <div class="kpi-value red">−39,2%</div>
+        <div class="kpi-sub">56 vendas a menos em um mês</div>
+      </div>
+      <div class="kpi-card animate animate-4">
+        <div class="kpi-label">CPA em Fevereiro</div>
+        <div class="kpi-value red">R$ 79,30</div>
+        <div class="kpi-sub">Era R$ 61,24 em Novembro (+30%)</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════════════
+     EVOLUÇÃO DO FATURAMENTO
+═════════════════════════════════════════════ -->
+<div class="container">
+  <section class="section">
+    <div class="section-label">02 — Faturamento</div>
+    <div class="section-title">Evolução mensal do faturamento bruto</div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">Faturamento Bruto & Lucro — Novembro a Fevereiro</div>
+      <div class="chart-canvas-wrap" style="height:280px">
+        <canvas id="chartFat"></canvas>
+      </div>
+    </div>
+
+    <div style="margin-top: 16px;">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Mês</th>
+              <th>Faturamento Bruto</th>
+              <th>Lucro</th>
+              <th>Gasto Anúncios</th>
+              <th>ROI</th>
+              <th>Margem</th>
+              <th>CPA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-month">Novembro 2025</td>
+              <td>R$ 19.259,89</td>
+              <td class="td-good">R$ 11.636,95</td>
+              <td class="td-muted">R$ 6.797,09</td>
+              <td>2,71</td>
+              <td class="td-good">63,1%</td>
+              <td>R$ 61,24</td>
+            </tr>
+            <tr>
+              <td class="td-month">Dezembro 2025</td>
+              <td>R$ 19.192,75</td>
+              <td class="td-warn">R$ 10.963,36</td>
+              <td class="td-muted">R$ 7.337,84</td>
+              <td>2,49</td>
+              <td class="td-warn">59,9%</td>
+              <td>R$ 63,26</td>
+            </tr>
+            <tr>
+              <td class="td-month">Janeiro 2026</td>
+              <td style="color:#fff;font-weight:700">R$ 29.741,01</td>
+              <td class="td-good">R$ 18.120,32</td>
+              <td class="td-muted">R$ 10.361,74</td>
+              <td style="color:var(--green);font-weight:600">2,75</td>
+              <td class="td-good">63,6%</td>
+              <td>R$ 69,54</td>
+            </tr>
+            <tr>
+              <td class="td-month">Fevereiro 2026</td>
+              <td class="td-bad">R$ 18.085,76</td>
+              <td class="td-bad">R$ 9.814,63</td>
+              <td class="td-muted">R$ 7.375,06</td>
+              <td class="td-bad">2,33</td>
+              <td class="td-bad">57,1%</td>
+              <td class="td-bad">R$ 79,30</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════════════
+     FUNIL DE CONVERSÃO
+═════════════════════════════════════════════ -->
+<div class="container">
+  <section class="section">
+    <div class="section-label">03 — Funil de Conversão</div>
+    <div class="section-title">Taxas em cada etapa do funil</div>
+
+    <div class="table-wrap" style="margin-bottom: 16px;">
+      <table>
+        <thead>
+          <tr>
+            <th>Mês</th>
+            <th>Cliques</th>
+            <th>Vis. Página</th>
+            <th>Clique → Página</th>
+            <th>ICs</th>
+            <th>Vendas Inic.</th>
+            <th>IC → Venda</th>
+            <th>Vendas Apr.</th>
+            <th>Apr. / Inic.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-month">Novembro</td>
+            <td class="td-muted">3.604</td>
+            <td class="td-muted">2.778</td>
+            <td class="td-good">77,1%</td>
+            <td class="td-muted">425</td>
+            <td class="td-muted">130</td>
+            <td class="td-good">30,6%</td>
+            <td><strong>111</strong></td>
+            <td class="td-good">85,4%</td>
+          </tr>
+          <tr>
+            <td class="td-month">Dezembro</td>
+            <td class="td-muted">5.650</td>
+            <td class="td-muted">2.590</td>
+            <td class="td-bad">45,8%</td>
+            <td class="td-muted">471</td>
+            <td class="td-muted">132</td>
+            <td class="td-warn">28,0%</td>
+            <td><strong>116</strong></td>
+            <td class="td-good">87,9%</td>
+          </tr>
+          <tr>
+            <td class="td-month">Janeiro</td>
+            <td class="td-muted">9.473</td>
+            <td class="td-muted">5.049</td>
+            <td class="td-warn">53,3%</td>
+            <td class="td-muted">949</td>
+            <td class="td-muted">194</td>
+            <td class="td-bad">20,4%</td>
+            <td><strong style="color:var(--green)">149</strong></td>
+            <td class="td-warn">76,8%</td>
+          </tr>
+          <tr>
+            <td class="td-month">Fevereiro</td>
+            <td class="td-muted">7.112</td>
+            <td class="td-muted">3.747</td>
+            <td class="td-warn">52,7%</td>
+            <td class="td-muted">555</td>
+            <td class="td-muted">122</td>
+            <td class="td-bad">22,0%</td>
+            <td><strong style="color:var(--red)">93</strong></td>
+            <td class="td-warn">76,2%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="two-col">
+      <div class="chart-wrap">
+        <div class="chart-title">Clique → Visualização de Página (%)</div>
+        <div class="chart-canvas-wrap" style="height:220px">
+          <canvas id="chartClickPage"></canvas>
+        </div>
+      </div>
+      <div class="chart-wrap">
+        <div class="chart-title">IC → Venda Iniciada (%) — Etapa crítica</div>
+        <div class="chart-canvas-wrap" style="height:220px">
+          <canvas id="chartIC"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════════════
+     IMPACTO DO AUMENTO DE PREÇO
+═════════════════════════════════════════════ -->
+<div class="container">
+  <section class="section">
+    <div class="section-label">04 — Análise de Preço</div>
+    <div class="section-title">Impacto do aumento de preço em Janeiro</div>
+
+    <div class="highlight-box">
+      <div class="highlight-box-title">O que aconteceu em 15 de Janeiro</div>
+      <div class="highlight-box-body">
+        Em 15 de janeiro, o preço de <strong>Presentes Comestíveis foi reajustado de R$ 247 para R$ 347 (+40%)</strong>
+        e um novo produto foi lançado (Curso Biscoitos Florais). Isso nos permite comparar o funil na mesma campanha,
+        com o mesmo público, antes e depois da mudança.
+      </div>
+    </div>
+
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-period">1 a 15 de Janeiro — Preço R$ 247</div>
+        <div class="price-headline">Antes do reajuste</div>
+        <div class="price-metrics">
+          <div class="price-metric">
+            <span class="price-metric-name">Cliques</span>
+            <span class="price-metric-value">4.274</span>
+          </div>
+          <div class="price-metric">
+            <span class="price-metric-name">Vis. Página</span>
+            <span class="price-metric-value" style="color:var(--muted)">1.942 (45,4%)</span>
+          </div>
+          <div class="price-metric">
+            <span class="price-metric-name">ICs</span>
+            <span class="price-metric-value">373 (8,7%)</span>
+          </div>
+          <div class="price-metric">
+            <span class="price-metric-name">IC → Venda</span>
+            <span class="price-metric-value" style="color:var(--gold)">23,3%</span>
+          </div>
+          <div class="price-metric">
+            <span class="price-metric-name">Vendas Aprovadas</span>
+            <span class="price-metric-value" style="color:var(--green)">63</span>
+          </div>
+          <div class="price-metric">
+            <span class="price-metric-name">Faturamento</span>
+            <span class="price-metric-value">R$ 11.047,93</span>
+          </div>
+          <div class="price-metric">
+            <span class="price-metric-name">Margem</span>
+            <span class="price-metric-value" style="color:var(--gold)">59,4%</span>
+          </div>
+          <div class="price-metric">
+            <span class="price-metric-name">CPA</span>
+            <span class="price-metric-value">R$ 67,78</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="price-divider">
+        <div class="price-divider-inner"></div>
+      </div>
+
+      <div class="price-card after">
+        <div class="price-period">16 a 31 de Janeiro — Preço R$ 347</div>
+        <div class="price-headline">Após o reajuste + novo produto</div>
+        <div class="price-metrics">
+          <div class="price-metric">
+            <span class="price-metric-name">Cliques</span>
+            <span class="price-metric-value">5.199</span>
+          </div>
+          <div class="price-metric">
+            <span class="price-metric-name">Vis. Página</span>
+            <span class="price-metric-value" style="color:var(--green)">3.107 (59,8%)</span>
+          </div>
+          <div class="price-metric">
+            <span class="price-metric-name">ICs</span>
+            <span class="price-metric-value">576 (11,1%)</span>
+          </div>
+          <div class="price-metric">
+            <span class="price-metric-name">IC → Venda</span>
+            <span class="price-metric-value" style="color:var(--red)">18,6% ↓</span>
+          </div>
+          <div class="price-metric">
+            <span class="price-metric-name">Vendas Aprovadas</span>
+            <span class="price-metric-value" style="color:var(--green)">86</span>
+          </div>
+          <div class="price-metric">
+            <span class="price-metric-name">Faturamento</span>
+            <span class="price-metric-value" style="color:var(--green)">R$ 18.693,08</span>
+          </div>
+          <div class="price-metric">
+            <span class="price-metric-name">Margem</span>
+            <span class="price-metric-value" style="color:var(--green)">66,1% ↑</span>
+          </div>
+          <div class="price-metric">
+            <span class="price-metric-name">CPA</span>
+            <span class="price-metric-value" style="color:var(--muted)">R$ 70,83</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px">
+      <div class="chart-wrap">
+        <div class="chart-title">Comparativo Jan 1–15 vs Jan 16–31 — Vendas Aprovadas & Faturamento</div>
+        <div class="chart-canvas-wrap" style="height:240px">
+          <canvas id="chartJanSplit"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════════════
+     VENDAS POR PRODUTO
+═════════════════════════════════════════════ -->
+<div class="container">
+  <section class="section">
+    <div class="section-label">05 — Produtos</div>
+    <div class="section-title">Vendas por produto — Fevereiro 2026</div>
+
+    <div class="two-col">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Unidades</th>
+              <th>Participação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-month">Presentes Comestíveis</td>
+              <td>58</td>
+              <td>
+                <div class="prod-bar-wrap">
+                  <div class="prod-bar-bg">
+                    <div class="prod-bar-fill" style="width:62.4%;background:var(--gold)"></div>
+                  </div>
+                  <span style="font-size:13px;font-weight:600;color:var(--gold)">62,4%</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-month">E-Book Geleias</td>
+              <td>27</td>
+              <td>
+                <div class="prod-bar-wrap">
+                  <div class="prod-bar-bg">
+                    <div class="prod-bar-fill" style="width:29%;background:var(--blue)"></div>
+                  </div>
+                  <span style="font-size:13px;font-weight:600;color:var(--blue)">29,0%</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-month">Curso Biscoitos Florais</td>
+              <td>8</td>
+              <td>
+                <div class="prod-bar-wrap">
+                  <div class="prod-bar-bg">
+                    <div class="prod-bar-fill" style="width:8.6%;background:var(--green)"></div>
+                  </div>
+                  <span style="font-size:13px;font-weight:600;color:var(--green)">8,6%</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Faturamento</th>
+              <th>Participação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-month">Presentes Comestíveis</td>
+              <td style="font-weight:600">R$ 13.044,46</td>
+              <td>
+                <div class="prod-bar-wrap">
+                  <div class="prod-bar-bg">
+                    <div class="prod-bar-fill" style="width:72.1%;background:var(--gold)"></div>
+                  </div>
+                  <span style="font-size:13px;font-weight:600;color:var(--gold)">72,1%</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-month">Curso Biscoitos Florais</td>
+              <td style="font-weight:600">R$ 3.526,34</td>
+              <td>
+                <div class="prod-bar-wrap">
+                  <div class="prod-bar-bg">
+                    <div class="prod-bar-fill" style="width:19.5%;background:var(--green)"></div>
+                  </div>
+                  <span style="font-size:13px;font-weight:600;color:var(--green)">19,5%</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-month">E-Book Geleias</td>
+              <td style="font-weight:600">R$ 1.514,96</td>
+              <td>
+                <div class="prod-bar-wrap">
+                  <div class="prod-bar-bg">
+                    <div class="prod-bar-fill" style="width:8.4%;background:var(--blue)"></div>
+                  </div>
+                  <span style="font-size:13px;font-weight:600;color:var(--blue)">8,4%</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════════════
+     DIAGNÓSTICO
+═════════════════════════════════════════════ -->
+<div class="container">
+  <section class="section">
+    <div class="section-label">06 — Diagnóstico</div>
+    <div class="section-title">Dois problemas distintos</div>
+
+    <div class="diag-grid">
+      <div class="diag-card">
+        <div class="diag-number">01</div>
+        <div class="diag-title">Tráfego com qualidade inferior desde Dezembro</div>
+        <div class="diag-body">
+          A conversão de clique para visualização de página caiu de 77% em Novembro para 45% em Dezembro — e não se recuperou. Os anúncios passaram a atrair pessoas menos qualificadas, que clicam mas não chegam à página com intenção de compra.
+        </div>
+        <div class="diag-stat">
+          <div class="diag-stat-item">
+            <span class="diag-stat-val gold">77,1%</span>
+            <span class="diag-stat-lbl">Novembro</span>
+          </div>
+          <span class="arrow-right">→</span>
+          <div class="diag-stat-item">
+            <span class="diag-stat-val red">45,8%</span>
+            <span class="diag-stat-lbl">Dezembro</span>
+          </div>
+          <span class="arrow-right">→</span>
+          <div class="diag-stat-item">
+            <span class="diag-stat-val red">52,7%</span>
+            <span class="diag-stat-lbl">Fevereiro</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="diag-card">
+        <div class="diag-number">02</div>
+        <div class="diag-title">Aumento de preço reduziu a conversão no checkout</div>
+        <div class="diag-body">
+          O reajuste de R$ 247 → R$ 347 (+40%) gerou resistência no momento da compra. A taxa de IC para Venda caiu de 30,6% em Novembro para 22% em Fevereiro — ou seja, de cada 100 pessoas que iniciavam o checkout, 8 a menos estão comprando.
+        </div>
+        <div class="diag-stat">
+          <div class="diag-stat-item">
+            <span class="diag-stat-val gold">30,6%</span>
+            <span class="diag-stat-lbl">Novembro</span>
+          </div>
+          <span class="arrow-right">→</span>
+          <div class="diag-stat-item">
+            <span class="diag-stat-val red">18,6%</span>
+            <span class="diag-stat-lbl">Pós-reajuste</span>
+          </div>
+          <span class="arrow-right">→</span>
+          <div class="diag-stat-item">
+            <span class="diag-stat-val red">22,0%</span>
+            <span class="diag-stat-lbl">Fevereiro</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PLANO DE AÇÃO
+═════════════════════════════════════════════ -->
+<div class="container">
+  <section class="section">
+    <div class="section-label">07 — Próximos Passos</div>
+    <div class="section-title">Plano de ação</div>
+
+    <div class="plan-list">
+      <div class="plan-item">
+        <div class="plan-num">1</div>
+        <div class="plan-content">
+          <div class="plan-title">Renovar os criativos dos anúncios</div>
+          <div class="plan-desc">A conversão clique → página caiu de 77% para 45% desde Dezembro. Criar novos criativos com foco em intenção de compra: depoimentos reais, resultado concreto, urgência. Meta: voltar a 65%+.</div>
+        </div>
+        <div class="plan-tag"><span class="badge badge-bad">Prioridade Alta</span></div>
+      </div>
+
+      <div class="plan-item">
+        <div class="plan-num">2</div>
+        <div class="plan-content">
+          <div class="plan-title">Teste A/B de página — reforçar a oferta no preço atual (R$ 347)</div>
+          <div class="plan-desc">Testar versão da página com garantia ampliada para 30 dias, ancoragem de preço e prova social com resultados concretos. Objetivo: recuperar conversão no checkout de 22% para 27%+, sem reduzir preço.</div>
+        </div>
+        <div class="plan-tag"><span class="badge badge-bad">Prioridade Alta</span></div>
+      </div>
+
+      <div class="plan-item">
+        <div class="plan-num">3</div>
+        <div class="plan-content">
+          <div class="plan-title">Se Teste A/B não converter: testar preço R$ 297</div>
+          <div class="plan-desc">Caso a melhora de página não seja suficiente, testar preço intermediário de R$ 297. O salto de +40% (R$ 247 → R$ 347) foi agressivo; R$ 297 mantém upside de margem com menor resistência no checkout.</div>
+        </div>
+        <div class="plan-tag"><span class="badge badge-warn">Prioridade Média</span></div>
+      </div>
+
+      <div class="plan-item">
+        <div class="plan-num">4</div>
+        <div class="plan-content">
+          <div class="plan-title">Escalar o Curso Biscoitos Florais com campanha dedicada</div>
+          <div class="plan-desc">O curso gerou R$ 4.043 em 10 vendas em Janeiro e R$ 3.526 em 8 vendas em Fevereiro. Produto com alto potencial — investir em campanha própria com meta de 15+ vendas/mês.</div>
+        </div>
+        <div class="plan-tag"><span class="badge badge-warn">Prioridade Média</span></div>
+      </div>
+
+      <div class="plan-item">
+        <div class="plan-num">5</div>
+        <div class="plan-content">
+          <div class="plan-title">Mapear e controlar os descontos aplicados</div>
+          <div class="plan-desc">Definir política clara de quem recebe desconto, qual percentual e como rastrear. Sem visibilidade sobre isso, fica impossível medir o ticket médio real e tomar decisões de precificação com segurança.</div>
+        </div>
+        <div class="plan-tag"><span class="badge badge-good">Importante</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<div class="container">
+  <footer class="footer">
+    <div class="footer-text">Análise gerada com base nos dados de Meta Ads — Nov/2025 a Fev/2026</div>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════════
+     CHARTS
+═════════════════════════════════════════════ -->
+<script>
+  const gold   = '#c9a84c';
+  const green  = '#4dba87';
+  const red    = '#e05858';
+  const blue   = '#5b9bd5';
+  const muted  = '#7a7f8e';
+  const gridColor = 'rgba(255,255,255,0.05)';
+  const months = ['Nov/25', 'Dez/25', 'Jan/26', 'Fev/26'];
+
+  Chart.defaults.color = '#7a7f8e';
+  Chart.defaults.font.family = "'DM Sans', sans-serif";
+
+  const tickStyle = { color: muted, font: { size: 12 } };
+  const gridStyle = { color: gridColor, drawBorder: false };
+
+  // ── 1. FATURAMENTO BAR ──
+  new Chart(document.getElementById('chartFat'), {
+    type: 'bar',
+    data: {
+      labels: months,
+      datasets: [
+        {
+          label: 'Faturamento Bruto',
+          data: [19259.89, 19192.75, 29741.01, 18085.76],
+          backgroundColor: [
+            'rgba(201,168,76,0.7)',
+            'rgba(201,168,76,0.5)',
+            'rgba(77,186,135,0.8)',
+            'rgba(224,88,88,0.7)'
+          ],
+          borderRadius: 6,
+          borderSkipped: false,
+        },
+        {
+          label: 'Lucro',
+          data: [11636.95, 10963.36, 18120.32, 9814.63],
+          backgroundColor: [
+            'rgba(201,168,76,0.25)',
+            'rgba(201,168,76,0.18)',
+            'rgba(77,186,135,0.3)',
+            'rgba(224,88,88,0.25)'
+          ],
+          borderRadius: 6,
+          borderSkipped: false,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { labels: { color: muted, boxWidth: 12, padding: 20 } },
+        tooltip: {
+          callbacks: {
+            label: ctx => `${ctx.dataset.label}: R$ ${ctx.parsed.y.toLocaleString('pt-BR', {minimumFractionDigits:2})}`
+          }
+        }
+      },
+      scales: {
+        x: { grid: gridStyle, ticks: tickStyle },
+        y: {
+          grid: gridStyle,
+          ticks: {
+            ...tickStyle,
+            callback: v => 'R$ ' + (v/1000).toFixed(0) + 'k'
+          }
+        }
+      }
+    }
+  });
+
+  // ── 2. CLICK → PAGE ──
+  new Chart(document.getElementById('chartClickPage'), {
+    type: 'bar',
+    data: {
+      labels: months,
+      datasets: [{
+        label: 'Clique → Página (%)',
+        data: [77.1, 45.8, 53.3, 52.7],
+        backgroundColor: [green, red, '#c9a84c88', '#c9a84c88'],
+        borderRadius: 6,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ctx.parsed.y + '%' } }
+      },
+      scales: {
+        x: { grid: gridStyle, ticks: tickStyle },
+        y: {
+          grid: gridStyle,
+          ticks: { ...tickStyle, callback: v => v + '%' },
+          max: 100
+        }
+      }
+    }
+  });
+
+  // ── 3. IC → VENDA ──
+  new Chart(document.getElementById('chartIC'), {
+    type: 'line',
+    data: {
+      labels: months,
+      datasets: [{
+        label: 'IC → Venda Iniciada (%)',
+        data: [30.6, 28.0, 20.4, 22.0],
+        borderColor: gold,
+        backgroundColor: 'rgba(201,168,76,0.1)',
+        pointBackgroundColor: [green, '#c9a84c', red, red],
+        pointBorderColor: [green, '#c9a84c', red, red],
+        pointRadius: 6,
+        pointHoverRadius: 8,
+        borderWidth: 2,
+        fill: true,
+        tension: 0.4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ctx.parsed.y + '%' } }
+      },
+      scales: {
+        x: { grid: gridStyle, ticks: tickStyle },
+        y: {
+          grid: gridStyle,
+          ticks: { ...tickStyle, callback: v => v + '%' },
+          min: 10,
+          max: 40
+        }
+      }
+    }
+  });
+
+  // ── 4. JAN SPLIT ──
+  new Chart(document.getElementById('chartJanSplit'), {
+    type: 'bar',
+    data: {
+      labels: ['Jan 1–15\n(R$ 247)', 'Jan 16–31\n(R$ 347)'],
+      datasets: [
+        {
+          label: 'Vendas Aprovadas',
+          data: [63, 86],
+          backgroundColor: ['rgba(201,168,76,0.6)', 'rgba(224,88,88,0.6)'],
+          borderRadius: 6,
+          yAxisID: 'y',
+          borderSkipped: false,
+        },
+        {
+          label: 'Faturamento (R$)',
+          data: [11047.93, 18693.08],
+          backgroundColor: ['rgba(201,168,76,0.2)', 'rgba(77,186,135,0.2)'],
+          borderRadius: 6,
+          yAxisID: 'y2',
+          borderSkipped: false,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { labels: { color: muted, boxWidth: 12, padding: 20 } },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              if (ctx.datasetIndex === 0) return `Vendas: ${ctx.parsed.y}`;
+              return `Faturamento: R$ ${ctx.parsed.y.toLocaleString('pt-BR', {minimumFractionDigits:2})}`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: { grid: gridStyle, ticks: tickStyle },
+        y: {
+          grid: gridStyle,
+          ticks: tickStyle,
+          position: 'left',
+          title: { display: true, text: 'Vendas', color: muted, font: { size: 11 } }
+        },
+        y2: {
+          grid: { display: false },
+          ticks: { ...tickStyle, callback: v => 'R$ ' + (v/1000).toFixed(0) + 'k' },
+          position: 'right',
+          title: { display: true, text: 'Faturamento', color: muted, font: { size: 11 } }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>
