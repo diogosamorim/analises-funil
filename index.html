@@ -608,6 +608,52 @@
       text-transform: uppercase;
     }
 
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      .container { padding: 0 16px; }
+
+      .header { padding: 48px 0 40px; }
+      .header h1 { font-size: 32px; }
+      .header-meta { gap: 16px; }
+      .header-meta-item { gap: 2px; }
+      .divider { display: none; }
+
+      .section { padding: 44px 0; }
+      .section-title { font-size: 22px; margin-bottom: 24px; }
+
+      .kpi-grid { grid-template-columns: 1fr 1fr; }
+
+      .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      table { min-width: 560px; }
+      th, td { padding: 12px 14px; font-size: 13px; }
+
+      .two-col { grid-template-columns: 1fr; }
+      .diag-grid { grid-template-columns: 1fr; }
+
+      .price-grid { grid-template-columns: 1fr; gap: 12px; }
+      .price-divider { display: none; }
+
+      .plan-item { grid-template-columns: 40px 1fr; gap: 14px; }
+      .plan-tag { grid-column: 2; }
+      .plan-num { width: 36px; height: 36px; font-size: 16px; }
+
+      /* inline grids usados nas seções de Biscoitos e Projeções */
+      [style*="grid-template-columns: repeat(3"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns:repeat(3"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: repeat(4"] { grid-template-columns: 1fr 1fr !important; }
+      [style*="grid-template-columns:repeat(4"] { grid-template-columns: 1fr 1fr !important; }
+
+      .chart-canvas-wrap { height: 200px !important; }
+
+      .diag-stat { flex-wrap: wrap; gap: 8px; }
+    }
+
+    @media (max-width: 420px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+      [style*="grid-template-columns: repeat(4"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns:repeat(4"] { grid-template-columns: 1fr !important; }
+    }
+
     /* ── FOOTER ── */
     .footer {
       padding: 40px 0;
