@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+<script>document.documentElement.classList.add('js');</script>
 <style>
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -834,8 +835,12 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    .reveal { opacity: 0; }
-    .reveal.visible { animation: fadeUp 0.45s ease forwards; }
+    /* ⚠️ Conteúdo VISÍVEL POR PADRÃO — animação só com JS confirmado.
+       Sem isso uma falha de script deixa o relatório do CLIENTE em branco.
+       Ver templates/DESIGN-SYSTEM.md (02/09/2026). */
+    .reveal { opacity: 1; }
+    html.js .reveal { opacity: 0; }
+    html.js .reveal.visible { animation: fadeUp 0.45s ease forwards; }
 
     /* ── SCROLLBAR ── */
     ::-webkit-scrollbar { width: 4px; height: 4px; }
@@ -1052,22 +1057,22 @@
       <div class="kpi-grid reveal" style="margin-bottom:14px">
         <div class="kpi-card copper-card">
           <div class="kpi-label">Faturamento Bruto</div>
-          <div class="kpi-value copper" data-count="19695" data-prefix="R$ " data-suffix="" data-decimals="0">R$ 0</div>
+          <div class="kpi-value copper" data-count="19695" data-prefix="R$ " data-suffix="" data-decimals="0">R$ 19.695</div>
           <div class="kpi-sub">85 vendas aprovadas · 01 a 31 de agosto</div>
         </div>
         <div class="kpi-card">
           <div class="kpi-label">Lucro Líquido</div>
-          <div class="kpi-value green" data-count="11911" data-prefix="R$ " data-suffix="">R$ 0</div>
+          <div class="kpi-value green" data-count="11911" data-prefix="R$ " data-suffix="">R$ 11.911</div>
           <div class="kpi-sub">Margem de 63,2%</div>
         </div>
         <div class="kpi-card">
           <div class="kpi-label">ROAS Real (UTMify)</div>
-          <div class="kpi-value green" data-count="2.84" data-prefix="" data-suffix="×" data-decimals="2">0×</div>
+          <div class="kpi-value green" data-count="2.84" data-prefix="" data-suffix="×" data-decimals="2">2,84×</div>
           <div class="kpi-sub">Meta 2,0× · Ótimo 3,0×</div>
         </div>
         <div class="kpi-card">
           <div class="kpi-label">CPA Real (UTMify)</div>
-          <div class="kpi-value" data-count="81.66" data-prefix="R$ " data-suffix="" data-decimals="2">R$ 0</div>
+          <div class="kpi-value" data-count="81.66" data-prefix="R$ " data-suffix="" data-decimals="2">R$ 81,66</div>
           <div class="kpi-sub">Linha vermelha R$ 100 · Ótimo R$ 70</div>
         </div>
       </div>
@@ -1075,12 +1080,12 @@
       <div class="kpi-grid reveal">
         <div class="kpi-card">
           <div class="kpi-label">Gasto em Anúncios</div>
-          <div class="kpi-value" data-count="6941" data-prefix="R$ " data-suffix="">R$ 0</div>
+          <div class="kpi-value" data-count="6941" data-prefix="R$ " data-suffix="">R$ 6.941</div>
           <div class="kpi-sub">Média de R$ 223,89 por dia</div>
         </div>
         <div class="kpi-card">
           <div class="kpi-label">Ticket Médio</div>
-          <div class="kpi-value" data-count="222" data-prefix="R$ " data-suffix="">R$ 0</div>
+          <div class="kpi-value" data-count="222" data-prefix="R$ " data-suffix="">R$ 222</div>
           <div class="kpi-sub">Média por venda · o Combo (R$ 586) puxa pra cima</div>
         </div>
         <div class="kpi-card">
