@@ -461,6 +461,7 @@
       border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
     }
 
+    .kpi-value.warn { color: var(--cobre-lt); }
     .insight-box.green-box  { border-left-color: var(--green); background: var(--green-dim); }
     .insight-box.red-box    { border-left-color: var(--red);   background: var(--red-dim); }
     .insight-box.dark-box   { border-left-color: var(--border); background: rgba(244,241,234,0.03); }
@@ -939,37 +940,34 @@
   </style>
 </head>
 <body>
-
 <div class="page-wrap">
 
   <aside class="sidebar">
-    <div class="sidebar-brand">
-      <div class="sidebar-brand-label">Projeção</div>
-      <div class="sidebar-brand-name">Aurelius</div>
-      <div class="sidebar-date">200 leads/semana · Meta Ads</div>
+    <div>
+      <div class="sidebar-brand">
+        <div class="sidebar-brand-label">Projeção</div>
+        <div class="sidebar-brand-name">Aurelius</div>
+        <div class="sidebar-date">200 leads/semana · Rio do Sul</div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-nav-section">Diagnóstico</div>
+        <a class="sidebar-link active" onclick="irPara('s1')"><span class="sidebar-link-num">01</span>Onde a conta está</a>
+        <a class="sidebar-link" onclick="irPara('s2')"><span class="sidebar-link-num">02</span>O caminho até a conversa</a>
+        <div class="sidebar-nav-section">A descoberta</div>
+        <a class="sidebar-link" onclick="irPara('s3')"><span class="sidebar-link-num">03</span>A conta compra pessoas</a>
+        <a class="sidebar-link" onclick="irPara('s4')"><span class="sidebar-link-num">04</span>O público é 4× maior</a>
+        <a class="sidebar-link" onclick="irPara('s5')"><span class="sidebar-link-num">05</span>Onde a verba se perde</a>
+        <div class="sidebar-nav-section">Plano</div>
+        <a class="sidebar-link" onclick="irPara('s6')"><span class="sidebar-link-num">06</span>Cenários para 200</a>
+        <a class="sidebar-link" onclick="irPara('s7')"><span class="sidebar-link-num">07</span>O plano</a>
+        <a class="sidebar-link" onclick="irPara('s8')"><span class="sidebar-link-num">08</span>O que depende de você</a>
+      </nav>
     </div>
-
-    <nav class="sidebar-nav">
-      <div class="sidebar-nav-section">Diagnóstico</div>
-      <a class="sidebar-link active" onclick="irPara('s1')"><span class="sidebar-link-num">01</span> Onde a conta está</a>
-      <a class="sidebar-link" onclick="irPara('s2')"><span class="sidebar-link-num">02</span> O caminho até a conversa</a>
-
-      <div class="sidebar-nav-section">A pergunta</div>
-      <a class="sidebar-link" onclick="irPara('s3')"><span class="sidebar-link-num">03</span> Por que verba não resolve</a>
-      <a class="sidebar-link" onclick="irPara('s4')"><span class="sidebar-link-num">04</span> A conta já fez 251</a>
-      <a class="sidebar-link" onclick="irPara('s5')"><span class="sidebar-link-num">05</span> As três alavancas</a>
-
-      <div class="sidebar-nav-section">Plano</div>
-      <a class="sidebar-link" onclick="irPara('s6')"><span class="sidebar-link-num">06</span> Cenários</a>
-      <a class="sidebar-link" onclick="irPara('s7')"><span class="sidebar-link-num">07</span> O plano</a>
-      <a class="sidebar-link" onclick="irPara('s8')"><span class="sidebar-link-num">08</span> O que depende de você</a>
-    </nav>
-
     <div class="sidebar-footer">
       <div class="sidebar-kpi-mini">
-        <div class="sidebar-kpi-item"><span class="sidebar-kpi-label">Hoje</span><span class="sidebar-kpi-value">64/semana</span></div>
+        <div class="sidebar-kpi-item"><span class="sidebar-kpi-label">Hoje</span><span class="sidebar-kpi-value">67/semana</span></div>
         <div class="sidebar-kpi-item"><span class="sidebar-kpi-label">Alvo</span><span class="sidebar-kpi-value up">200/semana</span></div>
-        <div class="sidebar-kpi-item"><span class="sidebar-kpi-label">Custo hoje</span><span class="sidebar-kpi-value">R$ 7,52</span></div>
+        <div class="sidebar-kpi-item"><span class="sidebar-kpi-label">Custo hoje</span><span class="sidebar-kpi-value">R$ 7,49</span></div>
         <div class="sidebar-kpi-item"><span class="sidebar-kpi-label">Já foi</span><span class="sidebar-kpi-value up">R$ 2,63</span></div>
       </div>
     </div>
@@ -980,11 +978,11 @@
     <div class="hero">
       <div class="hero-bg-text">200</div>
       <div class="hero-overline">Aurelius · Projeção · Máquinas Pesadas</div>
-      <h1>200 leads por semana<br/><em>cabem no orçamento de hoje.</em></h1>
+      <h1 class="hero-title">200 leads por semana<br/><em>cabem no Rio do Sul.</em></h1>
       <div class="hero-meta">
-        <div class="hero-meta-pill"><span class="hero-meta-pill-label">Base</span><span class="hero-meta-pill-value">05/08 a 01/09</span></div>
-        <div class="hero-meta-pill"><span class="hero-meta-pill-label">Canal</span><span class="hero-meta-pill-value">Meta Ads · WhatsApp</span></div>
-        <div class="hero-meta-pill"><span class="hero-meta-pill-label">Histórico</span><span class="hero-meta-pill-value">jul/2025 a ago/2026</span></div>
+        <div class="hero-meta-pill"><span class="hero-meta-pill-label">Base</span><span class="hero-meta-pill-value">agosto/2026</span></div>
+        <div class="hero-meta-pill"><span class="hero-meta-pill-label">Histórico</span><span class="hero-meta-pill-value">13 meses</span></div>
+        <div class="hero-meta-pill"><span class="hero-meta-pill-label">Praça</span><span class="hero-meta-pill-value">Rio do Sul + 40 km</span></div>
         <div class="hero-meta-pill"><span class="hero-meta-pill-label">Emitido em</span><span class="hero-meta-pill-value">02/09/2026</span></div>
       </div>
     </div>
@@ -998,35 +996,37 @@
       <div class="kpi-grid reveal" style="margin-bottom:14px">
         <div class="kpi-card copper-card">
           <div class="kpi-label">Conversas por semana</div>
-          <div class="kpi-value copper" data-count="64" data-prefix="" data-suffix="">0</div>
-          <div class="kpi-sub">256 nas últimas 4 semanas fechadas</div>
+          <div class="kpi-value copper" data-count="67">0</div>
+          <div class="kpi-sub">298 em agosto inteiro</div>
         </div>
         <div class="kpi-card">
           <div class="kpi-label">Custo por conversa</div>
-          <div class="kpi-value warn" data-count="7.52" data-prefix="R$ " data-suffix="" data-decimals="2">R$ 0</div>
+          <div class="kpi-value warn" data-count="7.49" data-prefix="R$ " data-decimals="2">R$ 0</div>
           <div class="kpi-sub">Meta R$ 6,00 · limite R$ 10,00</div>
         </div>
         <div class="kpi-card">
           <div class="kpi-label">Investimento por semana</div>
-          <div class="kpi-value" data-count="481" data-prefix="R$ " data-suffix="">R$ 0</div>
+          <div class="kpi-value" data-count="504" data-prefix="R$ ">R$ 0</div>
           <div class="kpi-sub">Teto combinado: R$ 700</div>
         </div>
         <div class="kpi-card">
-          <div class="kpi-label">Anúncios no ar</div>
-          <div class="kpi-value warn">7</div>
-          <div class="kpi-sub">Só 4 deles trouxeram volume</div>
+          <div class="kpi-label">Pessoas alcançadas no mês</div>
+          <div class="kpi-value red" data-count="67292">0</div>
+          <div class="kpi-sub">de 367 mil disponíveis na praça</div>
         </div>
       </div>
 
-      <div class="insight-box reveal">
-        <div class="insight-title">A resposta curta: o orçamento não é o problema</div>
+      <div class="insight-box dark-box reveal">
+        <div class="insight-title">A resposta curta: o limite não é o Rio do Sul, e não é o orçamento</div>
         <div class="insight-body">
-          A conta entrega hoje <strong>64 conversas por semana a R$ 7,52 cada</strong>, gastando R$ 481 —
-          <strong>R$ 219 abaixo do que está combinado</strong>. Chegar a 200 por semana significa multiplicar por 3,1.<br/><br/>
-          Levantamos 14 meses de histórico desta conta para responder. O resultado é direto:
-          <strong>com o mesmo dinheiro que já se gasta hoje, 200 por semana é alcançável</strong> —
-          mas não mexendo em verba. A conta já entregou <strong>251 conversas por semana</strong> em julho de 2025,
-          por menos do que o teto atual. O que mudou de lá para cá não foi o preço da mídia. Foi o anúncio.
+          A conta entrega hoje <strong>67 conversas por semana a R$ 7,49 cada</strong>, gastando R$ 504 dos
+          R$ 700 combinados. Chegar a 200 significa multiplicar por 3.<br/><br/>
+          Levantei os 13 meses de histórico da conta para responder, e a resposta mudou de lugar depois
+          que medi o tamanho real da praça. <strong>Rio do Sul mais 40 km tem entre 367 e 431 mil pessoas
+          alcançáveis. A conta falou com 67 mil em agosto — 18%.</strong><br/><br/>
+          Os outros 82% não foram alcançados porque a verba está sendo gasta mostrando o anúncio
+          <strong>quase quatro vezes para as mesmas pessoas</strong>. É aí que está o dinheiro,
+          e é isso que este documento demonstra.
         </div>
       </div>
     </section>
@@ -1036,208 +1036,266 @@
         <h2 class="section-title">O caminho até a conversa</h2>
       </div>
 
-      <div style="margin-bottom:20px">
-        <div style="font-family:'Satoshi',sans-serif;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--cobre);margin-bottom:10px;font-weight:500">Últimas 4 semanas · 05/08 a 01/09</div>
-        <div class="funnel-visual reveal">
-          <div class="funnel-step"><div class="funnel-step-inner s1">
-            <div class="funnel-label">Aparições</div><div class="funnel-num">226.802</div><div class="funnel-rate">entrada</div></div></div>
-          <div class="funnel-step"><div class="funnel-step-inner s2">
-            <div class="funnel-label">Cliques</div><div class="funnel-num">760</div><div class="funnel-rate">0,34%</div></div></div>
-          <div class="funnel-step"><div class="funnel-step-inner s4">
-            <div class="funnel-label">Conversas</div><div class="funnel-num">256</div><div class="funnel-rate">33,7%</div></div></div>
-        </div>
+      <div class="reveal" style="font-family:'Satoshi',sans-serif;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--cobre);margin-bottom:10px;font-weight:500">Agosto de 2026 · mês fechado</div>
+
+      <div class="funnel-visual reveal" style="margin-bottom:14px">
+        <div class="funnel-step"><div class="funnel-step-inner">
+          <div class="funnel-label">Aparições</div>
+          <div class="funnel-num">263.183</div>
+          <div class="funnel-rate">para 67.292 pessoas</div>
+        </div></div>
+        <div class="funnel-step"><div class="funnel-step-inner">
+          <div class="funnel-label">Cliques no link</div>
+          <div class="funnel-num">910</div>
+          <div class="funnel-rate">0,346%</div>
+        </div></div>
+        <div class="funnel-step"><div class="funnel-step-inner">
+          <div class="funnel-label">Conversas</div>
+          <div class="funnel-num">298</div>
+          <div class="funnel-rate">32,7%</div>
+        </div></div>
       </div>
 
       <div class="table-wrap reveal" style="margin-bottom:14px">
         <table>
-          <thead><tr><th>Etapa</th><th>Hoje</th><th>Julho de 2025</th><th>Diferença</th><th>O que essa etapa mede</th></tr></thead>
+          <thead><tr><th>Etapa</th><th>Agosto 2026</th><th>Julho 2025</th><th>Diferença</th><th>O que essa etapa mede</th></tr></thead>
           <tbody>
             <tr>
               <td class="td-name">Custo para aparecer mil vezes</td>
-              <td class="td-mono">R$ 8,49</td><td class="td-mono">R$ 7,26</td>
-              <td class="td-muted">+17%</td>
+              <td class="td-mono">R$ 8,48</td><td class="td-mono">R$ 7,26</td>
+              <td class="td-warn">+17%</td>
               <td class="td-muted">O preço do leilão — praticamente igual</td>
             </tr>
             <tr style="background:rgba(240,85,85,0.06)">
-              <td class="td-name" style="color:var(--red)">Quantos clicam</td>
-              <td class="td-bad"><strong>0,34%</strong></td><td class="td-good"><strong>1,42%</strong></td>
-              <td class="td-bad">4,2× pior</td>
-              <td class="td-muted">Se o anúncio dá motivo para agir — <strong>aqui está o buraco</strong></td>
+              <td class="td-name" style="color:var(--red)">Quantos clicam no link</td>
+              <td class="td-bad">0,346%</td><td class="td-good">0,644%</td>
+              <td class="td-bad">1,9× pior</td>
+              <td class="td-muted">Se o anúncio dá motivo para agir</td>
             </tr>
             <tr>
               <td class="td-name">Quantos, tendo clicado, mandam mensagem</td>
-              <td class="td-warn">33,7%</td><td class="td-good">42,9%</td>
-              <td class="td-warn">1,3× pior</td>
-              <td class="td-muted">Se a conversa começa depois do clique</td>
+              <td class="td-bad">32,7%</td><td class="td-good">42,9%</td>
+              <td class="td-bad">1,3× pior</td>
+              <td class="td-muted">O que acontece <em>depois</em> do clique</td>
             </tr>
-            <tr style="background:rgba(244,241,234,0.02)">
-              <td class="td-name" style="font-style:italic;color:var(--muted)">Custo por conversa</td>
-              <td class="td-bad"><strong>R$ 7,52</strong></td><td class="td-good"><strong>R$ 2,63</strong></td>
+            <tr>
+              <td class="td-name">Quantas vezes a mesma pessoa vê o anúncio</td>
+              <td class="td-bad">3,91</td><td class="td-good">2,50</td>
+              <td class="td-bad">1,6× pior</td>
+              <td class="td-muted">Quanta repetição a verba está pagando</td>
+            </tr>
+            <tr style="border-top:2px solid var(--border2)">
+              <td class="td-name"><em>Custo por conversa</em></td>
+              <td class="td-bad">R$ 7,49</td><td class="td-good">R$ 2,63</td>
               <td class="td-bad">2,9× pior</td>
-              <td class="td-muted">O resultado das duas linhas acima</td>
+              <td class="td-muted">O resultado das linhas acima</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <div class="insight-box red-box reveal" style="margin-bottom:14px">
-        <div class="insight-title">O leilão não encareceu. O anúncio parou de convencer.</div>
+      <div class="insight-box dark-box reveal" style="margin-bottom:14px">
+        <div class="insight-title">A conta fecha: 1,17 × 1,86 × 1,31 = 2,85</div>
         <div class="insight-body">
-          Esta é a descoberta que muda a conversa. <strong>Aparecer para mil pessoas custa hoje R$ 8,49 e custava
-          R$ 7,26 em julho de 2025</strong> — 17% de diferença em catorze meses, que é menos que a inflação.
-          A mídia não ficou cara.<br/><br/>
-          <strong>O que mudou foi quantas dessas mil pessoas clicam: eram 14 em cada mil, hoje são 3.</strong>
-          A conta compra praticamente a mesma quantidade de atenção por real — só que agora quase ninguém reage a ela.<br/><br/>
-          É por isso que colocar mais dinheiro não resolve: <strong>mais dinheiro compra mais aparições, e a perda
-          acontece depois da aparição.</strong>
+          As três pioras se multiplicam e dão exatamente a piora do custo. <strong>E a menor das três é o
+          leilão.</strong> Aparecer para mil pessoas custa hoje R$ 8,48 e custava R$ 7,26 há catorze meses —
+          17% em mais de um ano, menos que a inflação. <strong>A mídia não ficou cara.</strong><br/><br/>
+          As outras duas etapas — quem clica e quem, tendo clicado, manda mensagem — respondem por
+          <strong>2,4× dos 2,9×</strong>. É tudo o que acontece depois que a plataforma já entregou a aparição.
         </div>
-      </div>
-
-      <div class="insight-box dark-box reveal">
-        <div class="insight-title">Duas observações operacionais do período</div>
-        <div class="insight-body">
-          <strong>Em 4 dos 28 dias a conta não entregou nada</strong> — 01, 10, 19 e 28 de agosto.
-          São dias de saldo zerado, não de mídia ruim. Cada parada dessas interrompe o aprendizado das campanhas
-          e derruba a média da semana.<br/><br/>
-          <strong>A mesma pessoa viu os anúncios 3,65 vezes no período</strong>, com 62 mil pessoas alcançadas
-          num público disponível de cerca de 100 mil. A conta está falando com a mesma gente repetidamente,
-          o que também pesa na queda do clique.
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="s3">
-      <div class="section-header">
-        <span class="section-num">03 —</span>
-        <h2 class="section-title">Por que mais verba não leva a 200</h2>
-      </div>
-
-      <div class="insight-box reveal" style="margin-bottom:14px">
-        <div class="insight-title">A conta mediu isso três vezes, no próprio histórico</div>
-        <div class="insight-body">
-          Não é teoria. Em julho e agosto medimos os mesmos três anúncios em duas faixas de verba diferentes,
-          com a mesma taxa de clique. <strong>Sempre que a verba subiu, o custo por conversa subiu junto:</strong><br/><br/>
-          Um anúncio que fazia <strong>R$ 5,51</strong> a R$ 5/dia passou a fazer <strong>R$ 12,91</strong> a R$ 20/dia.
-          Outro que fazia R$ 5,18 passou a R$ 9,09. Um terceiro, de R$ 6,10 para R$ 7,43.<br/><br/>
-          <strong>"Achei um anúncio a R$ 5" não é permissão para colocar verba nele.</strong> O número morre junto
-          com a verba baixa que o produziu — porque o anúncio esgota a fatia de público que ele alcança bem,
-          e o dinheiro extra vai comprar gente que reage menos.
-        </div>
-      </div>
-
-      <div class="table-wrap reveal" style="margin-bottom:14px">
-        <table>
-          <thead><tr><th>Se a única mudança for verba</th><th>Valor</th><th>Leitura</th></tr></thead>
-          <tbody>
-            <tr>
-              <td class="td-name">Investimento necessário por semana</td>
-              <td class="td-bad"><strong>R$ 4.700</strong></td>
-              <td class="td-muted">6,7× o teto combinado de R$ 700</td>
-            </tr>
-            <tr>
-              <td class="td-name">Custo por conversa projetado</td>
-              <td class="td-bad"><strong>R$ 23,50</strong></td>
-              <td class="td-muted">2,4× o limite de R$ 10,00</td>
-            </tr>
-            <tr>
-              <td class="td-name">Vezes que a mesma pessoa veria o anúncio</td>
-              <td class="td-bad">~5 por semana</td>
-              <td class="td-muted">Hoje é menos de 1 por semana</td>
-            </tr>
-            <tr>
-              <td class="td-name">Investimento no mês</td>
-              <td class="td-bad">~R$ 20.000</td>
-              <td class="td-muted">Contra R$ 2.400 aportados em agosto</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
 
       <div class="insight-box red-box reveal">
-        <div class="insight-title">Este cenário está aqui para ser descartado</div>
+        <div class="insight-title">⚠️ Uma correção que devo a você</div>
         <div class="insight-body">
-          Chegar a 200 conversas por semana <strong>sem mudar mais nada</strong> custaria R$ 4.700 por semana,
-          a R$ 23,50 cada — e ainda esbarraria no tamanho da região: seriam 550 mil aparições por semana
-          num público de 100 mil pessoas.<br/><br/>
-          <strong>Não é uma recomendação. É a prova de que a resposta não está no orçamento</strong> —
-          e é o que justifica olhar para o que a conta já fez antes.
+          Na primeira versão deste documento eu comparei <strong>duas contas diferentes de clique</strong> —
+          "cliques totais" em 2025 contra "cliques no link" em 2026 — e reportei uma queda de 4,2×.
+          <strong>Na mesma métrica, a queda é de 1,9×.</strong><br/><br/>
+          A direção continua valendo: o problema está no anúncio, não no leilão. Mas o tamanho era outro,
+          e o plano que saía dali estava calibrado errado. Os números desta versão são todos da mesma régua.
+        </div>
+      </div>
+    </section>
+    <section class="section" id="s3">
+      <div class="section-header">
+        <span class="section-num">03 —</span>
+        <h2 class="section-title">A conta não compra cliques. Compra pessoas.</h2>
+      </div>
+
+      <div class="chart-wrap reveal" style="margin-bottom:14px">
+        <div class="chart-label">Quantas vezes a mesma pessoa vê o anúncio (barras) × quantos clicam (linha) · 13 meses</div>
+        <div style="position:relative;height:270px"><canvas id="chartFreq"></canvas></div>
+      </div>
+
+      <div class="insight-box dark-box reveal" style="margin-bottom:14px">
+        <div class="insight-title">As duas curvas são espelho uma da outra</div>
+        <div class="insight-body">
+          Sempre que a repetição sobe, a taxa de clique cai — <strong>em todos os 13 meses, sem exceção</strong>.
+          A relação entre as duas é de <strong>−0,85</strong> numa escala que vai até −1. Em estatística
+          de mídia isso é praticamente uma lei.<br/><br/>
+          E o formato dela diz uma coisa muito específica: quando a repetição dobra, a taxa de clique cai
+          pela metade. <strong>Isso significa que o número de cliques não muda.</strong> Mostrar o anúncio
+          uma quarta vez para a mesma pessoa não traz clique nenhum a mais — só traz mais aparição para pagar.
+        </div>
+      </div>
+
+      <div class="reveal" style="font-family:'Satoshi',sans-serif;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--cobre);margin-bottom:10px;font-weight:500">A prova · compare as duas últimas colunas</div>
+
+      <div class="table-wrap reveal" style="margin-bottom:14px">
+        <table>
+          <thead><tr><th>Mês</th><th>Pessoas alcançadas</th><th>Vezes que cada uma viu</th><th>Clicaram (das aparições)</th><th>Clicaram (das pessoas)</th></tr></thead>
+          <tbody>
+            <tr style="background:rgba(40,196,138,0.05)">
+              <td class="td-name">Julho 2025</td>
+              <td class="td-muted">158.274</td><td class="td-good">2,50</td>
+              <td class="td-good">0,644%</td><td class="td-mono">1,61%</td>
+            </tr>
+            <tr style="background:rgba(40,196,138,0.05)">
+              <td class="td-name">Agosto 2025</td>
+              <td class="td-muted">160.248</td><td class="td-good">2,41</td>
+              <td class="td-good">0,790%</td><td class="td-mono">1,90%</td>
+            </tr>
+            <tr style="background:rgba(40,196,138,0.05)">
+              <td class="td-name">Setembro 2025</td>
+              <td class="td-muted">77.027</td><td class="td-good">2,47</td>
+              <td class="td-good">0,773%</td><td class="td-mono">1,91%</td>
+            </tr>
+            <tr style="background:rgba(40,196,138,0.05)">
+              <td class="td-name">Outubro 2025</td>
+              <td class="td-muted">71.651</td><td class="td-good">1,98</td>
+              <td class="td-good">0,692%</td><td class="td-mono">1,37%</td>
+            </tr>
+            <tr style="background:rgba(40,196,138,0.05)">
+              <td class="td-name">Novembro 2025</td>
+              <td class="td-muted">79.939</td><td class="td-good">2,04</td>
+              <td class="td-good">0,533%</td><td class="td-mono">1,09%</td>
+            </tr>
+            <tr>
+              <td class="td-name">Janeiro 2026</td>
+              <td class="td-muted">31.670</td><td class="td-bad">3,02</td>
+              <td class="td-bad">0,403%</td><td class="td-mono">1,22%</td>
+            </tr>
+            <tr>
+              <td class="td-name">Fevereiro 2026</td>
+              <td class="td-muted">47.511</td><td class="td-bad">4,06</td>
+              <td class="td-bad">0,337%</td><td class="td-mono">1,37%</td>
+            </tr>
+            <tr>
+              <td class="td-name">Março 2026</td>
+              <td class="td-muted">73.750</td><td class="td-bad">3,72</td>
+              <td class="td-bad">0,413%</td><td class="td-mono">1,54%</td>
+            </tr>
+            <tr>
+              <td class="td-name">Abril 2026</td>
+              <td class="td-muted">56.390</td><td class="td-bad">4,28</td>
+              <td class="td-bad">0,329%</td><td class="td-mono">1,41%</td>
+            </tr>
+            <tr>
+              <td class="td-name">Maio 2026</td>
+              <td class="td-muted">77.242</td><td class="td-bad">4,23</td>
+              <td class="td-bad">0,301%</td><td class="td-mono">1,28%</td>
+            </tr>
+            <tr>
+              <td class="td-name">Junho 2026</td>
+              <td class="td-muted">84.366</td><td class="td-bad">3,65</td>
+              <td class="td-bad">0,308%</td><td class="td-mono">1,12%</td>
+            </tr>
+            <tr>
+              <td class="td-name">Julho 2026</td>
+              <td class="td-muted">63.275</td><td class="td-bad">4,56</td>
+              <td class="td-bad">0,347%</td><td class="td-mono">1,58%</td>
+            </tr>
+            <tr>
+              <td class="td-name">Agosto 2026</td>
+              <td class="td-muted">67.292</td><td class="td-bad">3,91</td>
+              <td class="td-bad">0,346%</td><td class="td-mono">1,35%</td>
+            </tr>          </tbody>
+        </table>
+      </div>
+
+      <div class="compare-strip reveal" style="margin-bottom:14px">
+        <div class="compare-col">
+          <div class="compare-label">Clique por aparição</div>
+          <div class="funnel-num" style="color:var(--red)">0,30% a 0,79%</div>
+          <div class="funnel-rate">varia 2,6× — instável</div>
+        </div>
+        <div class="compare-divider"></div>
+        <div class="compare-col">
+          <div class="compare-label active">Clique por pessoa alcançada</div>
+          <div class="funnel-num" style="color:var(--green)">1,09% a 1,91%</div>
+          <div class="funnel-rate">média 1,44% — estável em 13 meses</div>
+        </div>
+      </div>
+
+      <div class="insight-box green-box reveal">
+        <div class="insight-title">É este o número que governa a conta</div>
+        <div class="insight-body">
+          <strong>Cada pessoa que a conta alcança entrega, em média, 1,44 clique a cada 100.</strong>
+          Esse número quase não se mexeu em treze meses — nem quando a conta rodava em 114 cidades,
+          nem agora que roda só no Rio do Sul. É a constante da operação.<br/><br/>
+          O CTR, que é o número que todo mundo olha, varia 2,6× — mas <strong>ele não está medindo a
+          qualidade do anúncio; está medindo quanta repetição foi comprada.</strong><br/><br/>
+          A consequência prática é direta e simples de operar:
+          <strong>o volume de conversas desta conta é uma função de quantas pessoas diferentes ela alcança.</strong>
+          Não de quanto se gasta, não do CTR. De quantas pessoas.
         </div>
       </div>
     </section>
     <section class="section" id="s4">
       <div class="section-header">
         <span class="section-num">04 —</span>
-        <h2 class="section-title">A conta já fez 251 por semana</h2>
+        <h2 class="section-title">O público do Rio do Sul é 4× maior do que se assumia</h2>
       </div>
 
-      <div class="chart-wrap reveal" style="margin-bottom:14px">
-        <div class="chart-label">Conversas por mês · o que a conta já entregou</div>
-        <div style="position:relative;height:260px"><canvas id="chartHist"></canvas></div>
+      <div class="insight-box red-box reveal" style="margin-bottom:14px">
+        <div class="insight-title">A premissa que estava errada há meses</div>
+        <div class="insight-body">
+          A operação vinha trabalhando com "o Rio do Sul tem cerca de 100 mil pessoas alcançáveis, o mercado
+          é finito, a alavanca só pode ser criativo". <strong>Fui conferir esse número direto na plataforma
+          e ele não é o tamanho da praça — é o tamanho de um filtro que nós mesmos colocamos.</strong>
+        </div>
       </div>
 
-        <div class="reveal" style="font-family:'Satoshi',sans-serif;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--cobre);margin-bottom:10px;font-weight:500">Meses fechados · agosto/2026 aqui é o mês cheio, por isso difere do recorte de 4 semanas do início</div>
       <div class="table-wrap reveal" style="margin-bottom:14px">
         <table>
-          <thead><tr><th>Mês</th><th>Investido</th><th>Conversas</th><th>Por semana</th><th>Custo por conversa</th></tr></thead>
+          <thead><tr><th>Como o público está definido</th><th>Pessoas disponíveis</th><th></th></tr></thead>
           <tbody>
             <tr style="background:rgba(40,196,138,0.05)">
-              <td class="td-name" style="color:var(--green)">Julho 2025</td>
-              <td class="td-muted">R$ 2.872,51</td><td class="td-good"><strong>1.093</strong></td>
-              <td class="td-good"><strong>251</strong></td><td class="td-good">R$ 2,63</td>
+              <td class="td-name" style="color:var(--green)">Rio do Sul + 40 km · 18 a 65 anos</td>
+              <td class="td-good"><strong>367.000 a 431.000</strong></td>
+              <td class="td-muted">o tamanho real da praça, sem sair dela</td>
             </tr>
             <tr>
-              <td class="td-name">Agosto 2025</td>
-              <td class="td-muted">R$ 3.035,69</td><td class="td-mono">1.051</td>
-              <td class="td-good">241</td><td class="td-good">R$ 2,89</td>
-            </tr>
-            <tr>
-              <td class="td-name">Setembro 2025</td>
-              <td class="td-muted">R$ 1.614,23</td><td class="td-mono">694</td>
-              <td class="td-good">160</td><td class="td-good">R$ 2,33</td>
-            </tr>
-            <tr>
-              <td class="td-name">Outubro 2025</td>
-              <td class="td-muted">R$ 1.035,00</td><td class="td-mono">383</td>
-              <td class="td-mono">88</td><td class="td-good">R$ 2,70</td>
-            </tr>
-            <tr>
-              <td class="td-name">Novembro 2025</td>
-              <td class="td-muted">R$ 1.150,02</td><td class="td-mono">454</td>
-              <td class="td-mono">104</td><td class="td-good">R$ 2,53</td>
+              <td class="td-name">…só homens</td>
+              <td class="td-mono">173.000 a 203.000</td>
+              <td class="td-muted">metade, e ainda o dobro do que se alcança hoje</td>
             </tr>
             <tr style="background:rgba(240,85,85,0.06)">
-              <td class="td-name" style="color:var(--red)">Agosto 2026</td>
-              <td class="td-muted">R$ 2.109,08</td><td class="td-bad">266</td>
-              <td class="td-bad">61</td><td class="td-bad">R$ 7,93</td>
+              <td class="td-name" style="color:var(--red)">…estreitando por interesses de máquina</td>
+              <td class="td-bad">111.000 a 131.000</td>
+              <td class="td-muted"><strong>é este o "~100 mil" do briefing</strong></td>
+            </tr>
+            <tr style="border-top:2px solid var(--border2)">
+              <td class="td-name"><em>Quantas a conta de fato alcançou em agosto</em></td>
+              <td class="td-bad"><strong>67.292</strong></td>
+              <td class="td-muted"><strong>18% da praça</strong></td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <div class="insight-box green-box reveal" style="margin-bottom:14px">
-        <div class="insight-title">Quatro vezes o volume, pelo mesmo dinheiro</div>
+      <div class="insight-box green-box reveal">
+        <div class="insight-title">O que isso destrava</div>
         <div class="insight-body">
-          <strong>Julho de 2025 fez 1.093 conversas com R$ 2.872. Agosto de 2026 fez 266 com R$ 2.109.</strong><br/><br/>
-          A meta de 200 por semana não é território novo para esta conta: <strong>ela rodou acima disso por dois meses
-          seguidos</strong>, e ficou entre R$ 2,33 e R$ 2,89 por conversa durante cinco meses. Julho de 2025, na
-          proporção de hoje, custaria <strong>R$ 660 por semana</strong> para 251 conversas — dentro do teto de R$ 700.
-        </div>
-      </div>
-
-      <div class="insight-box reveal">
-        <div class="insight-title">O que era o modelo — e é aqui que mora a resposta</div>
-        <div class="insight-body">
-          Uma campanha por cidade pequena, rodando <strong>2 a 5 dias em volta de uma turma real com data marcada</strong>.
-          Foram 114 cidades. As 67 campanhas com volume relevante somaram 2.987 conversas a <strong>R$ 2,30 cada</strong>.
-          Algumas cidades fizeram R$ 1,10.<br/><br/>
-          O anúncio era sempre o mesmo formato, trocando só os dados locais:<br/><br/>
-          <strong>Cidade e data na primeira linha.</strong> Endereço físico do local.
-          Horário. Vagas limitadas <em>para aquela data</em>.<br/><br/>
-          A copy de hoje é <strong>melhor escrita</strong> — o gancho é mais forte, fala da transformação da pessoa
-          e não da máquina. E performa três vezes pior. <strong>Porque ela diz "matrículas abertas", que é o mesmo
-          que dizer "qualquer dia".</strong> Não há motivo para agir hoje.<br/><br/>
-          <strong>Gancho bom sem prazo perde para anúncio comum com prazo.</strong> É o aprendizado mais valioso
-          que esta conta produziu.
+          Se o teto fosse mesmo 100 mil pessoas, 200 conversas por semana seriam 870 por mês numa praça de
+          100 mil — quase 1% da população inteira abrindo uma conversa todo mês, todo mês. Seria insustentável,
+          e a resposta honesta teria que ser "não dá sem sair do Rio do Sul".<br/><br/>
+          <strong>Com 367 mil, a conta é outra.</strong> Alcançar as 140 a 150 mil pessoas que 200 por semana
+          exigem significa falar com <strong>cerca de 38% da praça</strong> — bem dentro do que uma campanha
+          local sustenta, e menos do que a própria conta já alcançou em agosto de 2025 (160 mil).<br/><br/>
+          E o mais importante: <strong>o filtro de interesses que produz o gargalo não faz falta.</strong>
+          As campanhas rodam em Advantage+, que trata interesse como sugestão e já expande por conta própria.
+          Tirar o filtro é mudar uma configuração — não custa mídia, não custa produção, não custa um dia de teste.
         </div>
       </div>
     </section>
@@ -1245,76 +1303,82 @@
     <section class="section" id="s5">
       <div class="section-header">
         <span class="section-num">05 —</span>
-        <h2 class="section-title">As três alavancas, e quanto cada uma vale</h2>
+        <h2 class="section-title">Onde a verba está se perdendo hoje</h2>
       </div>
 
-      <div style="font-family:'Satoshi',sans-serif;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-weight:500" class="reveal">Mantendo exatamente a verba de hoje — R$ 481 por semana</div>
+      <div class="reveal" style="font-family:'Satoshi',sans-serif;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--cobre);margin-bottom:10px;font-weight:500">Os 6 públicos que entregaram em agosto · nenhum deles está saturado sozinho</div>
 
-      <div class="table-wrap reveal" style="margin-bottom:24px">
+      <div class="table-wrap reveal" style="margin-bottom:14px">
         <table>
-          <thead><tr><th>Se a taxa de clique for…</th><th>Conversas/semana</th><th>Custo por conversa</th><th>Atinge 200?</th></tr></thead>
+          <thead><tr><th>Público</th><th>Investido</th><th>Pessoas alcançadas</th><th>Vezes que cada uma viu</th><th>Custo por conversa</th></tr></thead>
           <tbody>
-            <tr><td class="td-name">0,34% — hoje</td><td class="td-mono">64</td><td class="td-warn">R$ 7,52</td><td class="td-bad">não</td></tr>
-            <tr><td class="td-name">0,60% — metade do nível de 2025</td><td class="td-mono">115</td><td class="td-good">R$ 4,20</td><td class="td-warn">não</td></tr>
-            <tr style="background:rgba(40,196,138,0.05)">
-              <td class="td-name" style="color:var(--green)">1,00% — nível que a copy certa já entregou em 2026</td>
-              <td class="td-good"><strong>191</strong></td><td class="td-good"><strong>R$ 2,52</strong></td><td class="td-good">quase</td></tr>
-            <tr style="background:rgba(40,196,138,0.05)">
-              <td class="td-name" style="color:var(--green)">1,42% — nível de 2025</td>
-              <td class="td-good"><strong>271</strong></td><td class="td-good"><strong>R$ 1,77</strong></td><td class="td-good">com folga</td></tr>
+            <tr>
+              <td class="td-name">Rio do Sul — principal</td>
+              <td class="td-muted">R$ 836,21</td><td class="td-mono">52.132</td>
+              <td class="td-good">1,95</td><td class="td-good">R$ 6,38</td>
+            </tr>
+            <tr>
+              <td class="td-name">Alto Vale — vídeos</td>
+              <td class="td-muted">R$ 586,18</td><td class="td-mono">28.035</td>
+              <td class="td-good">2,37</td><td class="td-warn">R$ 7,92</td>
+            </tr>
+            <tr>
+              <td class="td-name">Rio do Sul — segundo público</td>
+              <td class="td-muted">R$ 504,96</td><td class="td-mono">19.562</td>
+              <td class="td-bad">2,97</td><td class="td-bad">R$ 9,90</td>
+            </tr>
+            <tr>
+              <td class="td-name">Rio do Sul — terceiro público</td>
+              <td class="td-muted">R$ 152,11</td><td class="td-mono">12.627</td>
+              <td class="td-good">1,53</td><td class="td-good">R$ 5,25</td>
+            </tr>
+            <tr>
+              <td class="td-name">Alto Vale — vídeos (2º)</td>
+              <td class="td-muted">R$ 91,65</td><td class="td-mono">5.719</td>
+              <td class="td-good">1,57</td><td class="td-bad">R$ 11,46</td>
+            </tr>
+            <tr>
+              <td class="td-name">Rio do Sul — quarto público</td>
+              <td class="td-muted">R$ 61,65</td><td class="td-mono">5.678</td>
+              <td class="td-good">1,49</td><td class="td-bad">R$ 12,33</td>
+            </tr>
+            <tr style="border-top:2px solid var(--border2)">
+              <td class="td-name"><em>Soma dos seis</em></td>
+              <td class="td-muted">R$ 2.232,76</td><td class="td-mono"><strong>123.753</strong></td>
+              <td class="td-muted">—</td><td class="td-muted">—</td>
+            </tr>
+            <tr style="background:rgba(240,85,85,0.06)">
+              <td class="td-name" style="color:var(--red)"><strong>Pessoas diferentes de verdade</strong></td>
+              <td class="td-muted">—</td><td class="td-bad"><strong>67.292</strong></td>
+              <td class="td-bad"><strong>3,91</strong></td><td class="td-bad"><strong>R$ 7,49</strong></td>
+            </tr>
           </tbody>
         </table>
       </div>
 
-      <div class="insight-box green-box reveal" style="margin-bottom:28px">
-        <div class="insight-title">Este é o número que responde a pergunta</div>
+      <div class="insight-box red-box reveal" style="margin-bottom:14px">
+        <div class="insight-title">123.753 menos 67.292: a mesma pessoa foi contada 1,84 vez</div>
         <div class="insight-body">
-          <strong>Com o mesmo orçamento de hoje, uma taxa de clique de 1% entrega 191 conversas por semana a R$ 2,52 cada.</strong><br/><br/>
-          E 1% não é aspiração: <strong>as melhores peças desta conta em 2026 já fizeram entre 0,85% e 1,58%</strong> —
-          são as que abrem falando do salário e da transformação da pessoa. O que está no ar hoje faz 0,27% a 0,51%.
-          <strong>A conta não perdeu a capacidade; perdeu as peças.</strong>
+          Olhe a coluna da repetição: <strong>cinco dos seis públicos rodam entre 1,49 e 2,37</strong> —
+          todos saudáveis. Nenhum está gasto. Mas eles são <strong>o mesmo pool de pessoas, recortado
+          de seis jeitos diferentes</strong>, e a pessoa que está nos seis vê o anúncio seis vezes.<br/><br/>
+          Por isso a conta inteira aparece com repetição 3,91 enquanto nenhuma peça isolada passa de 3.
+          <strong>O empilhamento não está em nenhum relatório de conjunto — só aparece quando se compara
+          a soma com o número real de pessoas.</strong><br/><br/>
+          Não é um acidente de agosto: <strong>maio deu 1,86× e julho deu 2,11×.</strong> É estrutural,
+          e vem se repetindo há pelo menos quatro meses.
         </div>
       </div>
 
-      <div style="font-family:'Satoshi',sans-serif;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;font-weight:500" class="reveal">As três alavancas, em ordem de tamanho</div>
-
-      <div class="context-grid reveal">
-        <div class="context-item">
-          <div class="context-num-wrap"><div class="context-num">1</div><div class="context-dot"></div></div>
-          <div>
-            <div class="context-title">Data, endereço e horário no anúncio · vale 3 a 4× o volume</div>
-            <div class="context-body">
-              É a diferença medida entre a taxa de clique de 2025 (1,42%) e a de hoje (0,34%). A copy que funcionou
-              trazia <strong>cidade e data na primeira linha, endereço do local, horário e vagas limitadas para aquela data</strong>.
-              <strong>Não custa mídia — custa ter a informação para colocar no anúncio.</strong>
-            </div>
-          </div>
-        </div>
-
-        <div class="context-item">
-          <div class="context-num-wrap"><div class="context-num">2</div><div class="context-dot"></div></div>
-          <div>
-            <div class="context-title">Quantidade de anúncios no ar · vale ~25% do custo</div>
-            <div class="context-body">
-              Medido nesta conta: com <strong>24 anúncios entregando, o custo ficou em R$ 6,86</strong>; com
-              <strong>4, subiu para R$ 9,00</strong> — o pior já registrado. Hoje são 7, e só 4 com volume.
-              Cada anúncio alcança uma fatia diferente do público; com poucos, todos saturam ao mesmo tempo.
-              <strong>Há 4 anúncios bons pausados que fizeram 63 conversas a R$ 5,90 em julho — reposição pronta, custo zero.</strong>
-            </div>
-          </div>
-        </div>
-
-        <div class="context-item">
-          <div class="context-num-wrap"><div class="context-num">3</div></div>
-          <div>
-            <div class="context-title">Público novo a cada turma · é o que sustenta o volume</div>
-            <div class="context-body">
-              Rio do Sul e região têm cerca de 100 mil pessoas, e a conta já falou com 62 mil delas no último mês.
-              <strong>Não há 200 conversas por semana dentro desse pool de forma contínua</strong> — foi por isso que
-              o modelo de 2025 funcionou: cada turma abria uma cidade nova, com público que nunca tinha visto o anúncio.
-              <strong>Esta alavanca não é de mídia. É do calendário de turmas.</strong>
-            </div>
-          </div>
+      <div class="insight-box dark-box reveal">
+        <div class="insight-title">Quanto isso custa, em dinheiro</div>
+        <div class="insight-body">
+          Pela lei da seção 03, o clique vem da pessoa, não da aparição. As aparições que caem em cima de
+          quem já foi alcançado <strong>não produzem clique novo</strong> — produzem só custo.<br/><br/>
+          <strong>Perto de R$ 1.000 dos R$ 2.232 de agosto foram gastos falando de novo com quem
+          já tinha sido alcançado naquele mês.</strong> Esse dinheiro já está no orçamento. Não precisa ser
+          aprovado, não precisa ser pedido — precisa ser redirecionado para as outras 300 mil pessoas
+          da praça que nunca viram o anúncio.
         </div>
       </div>
     </section>
@@ -1324,106 +1388,112 @@
         <h2 class="section-title">Cenários para 200 por semana</h2>
       </div>
 
-      <div style="margin-bottom:24px" class="reveal">
-        <div style="font-family:'Satoshi',sans-serif;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;font-weight:500">Premissas comuns aos três</div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden">
-          <div style="background:var(--grafite2);padding:16px 20px">
-            <div style="font-family:'Satoshi',sans-serif;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:500">Custo de aparecer</div>
-            <div style="font-family:'Satoshi',sans-serif;font-size:16px;font-weight:700;color:var(--offwhite)">R$ 8,49 / mil</div>
-            <div style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin-top:3px">O de hoje · não depende de nós</div>
-          </div>
-          <div style="background:var(--grafite2);padding:16px 20px">
-            <div style="font-family:'Satoshi',sans-serif;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:500">Clique → conversa</div>
-            <div style="font-family:'Satoshi',sans-serif;font-size:16px;font-weight:700;color:var(--offwhite)">33,7%</div>
-            <div style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin-top:3px">O de hoje · em 2025 era 42,9%</div>
-          </div>
-          <div style="background:var(--grafite2);padding:16px 20px">
-            <div style="font-family:'Satoshi',sans-serif;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:500">O que muda</div>
-            <div style="font-family:'Satoshi',sans-serif;font-size:16px;font-weight:700;color:var(--cobre-lt)">Só o anúncio</div>
-            <div style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin-top:3px">Nenhum cenário muda o leilão</div>
-          </div>
+      <div class="chart-wrap reveal" style="margin-bottom:14px">
+        <div class="chart-label">Conversas por semana, mês a mês · a linha tracejada é o alvo de 200</div>
+        <div style="position:relative;height:250px"><canvas id="chartHist"></canvas></div>
+      </div>
+
+      <div class="insight-box dark-box reveal" style="margin-bottom:14px">
+        <div class="insight-title">Como estes números foram feitos</div>
+        <div class="insight-body">
+          Um modelo de três linhas, usando a lei da seção 03:
+          <strong>conversas = pessoas alcançadas × 1,35 clique por 100 pessoas × quantos desses viram conversa.</strong><br/><br/>
+          Testei o modelo contra a realidade antes de projetar com ele: aplicado a agosto de 2026 ele
+          prevê <strong>68 conversas por semana — o real foi 67</strong>. Aplicado a julho de 2025 ele
+          prevê 215 e o real foi 247, ou seja, <strong>erra para menos</strong>. Os cenários abaixo são,
+          se alguma coisa, conservadores.
         </div>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px">
+      <div class="table-wrap reveal" style="margin-bottom:20px">
+        <table>
+          <thead><tr><th>Cenário</th><th>Verba/semana</th><th>Repetição</th><th>Clique → conversa</th><th>Leads/semana</th><th>Custo</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="td-name"><strong>A</strong> · Nada muda</td>
+              <td class="td-muted">R$ 504</td><td class="td-mono">3,9</td><td class="td-mono">32,7%</td>
+              <td class="td-bad"><strong>67</strong></td><td class="td-bad">R$ 7,49</td>
+            </tr>
+            <tr>
+              <td class="td-name"><strong>B</strong> · Consolidar os públicos e tirar o filtro de interesses</td>
+              <td class="td-muted">R$ 504</td><td class="td-mono">2,5</td><td class="td-mono">32,7%</td>
+              <td class="td-warn"><strong>105</strong></td><td class="td-warn">R$ 4,80</td>
+            </tr>
+            <tr>
+              <td class="td-name"><strong>C</strong> · B + arrumar o passo depois do clique</td>
+              <td class="td-muted">R$ 504</td><td class="td-mono">2,5</td><td class="td-mono">43,0%</td>
+              <td class="td-warn"><strong>138</strong></td><td class="td-warn">R$ 3,65</td>
+            </tr>
+            <tr style="background:rgba(217,108,28,0.06)">
+              <td class="td-name"><strong>D</strong> · C levado ao teto de R$ 700</td>
+              <td class="td-muted">R$ 700</td><td class="td-mono">2,5</td><td class="td-mono">43,0%</td>
+              <td class="td-good"><strong>192</strong></td><td class="td-good">R$ 3,65</td>
+            </tr>
+            <tr style="background:rgba(40,196,138,0.05)">
+              <td class="td-name"><strong>E</strong> · D com teto de repetição em 2 vezes</td>
+              <td class="td-muted">R$ 700</td><td class="td-mono">2,0</td><td class="td-mono">43,0%</td>
+              <td class="td-good"><strong>240</strong></td><td class="td-good">R$ 2,92</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
+      <div class="three-col" style="margin-bottom:14px">
         <div class="reveal" style="background:var(--grafite2);border:1px solid var(--border);border-top:2px solid var(--red);border-radius:var(--radius-lg);padding:28px 24px">
           <div style="font-family:'Satoshi',sans-serif;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:4px;font-weight:700">Se nada mudar</div>
-          <div style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin-bottom:20px;line-height:1.5">Mesmos 7 anúncios · mesma copy sem data · mesma região</div>
+          <div style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin-bottom:20px;line-height:1.5">Seis públicos no mesmo pool · filtro de interesses ligado · pós-clique como está</div>
           <div style="display:flex;flex-direction:column;gap:14px">
-            <div>
-              <div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Investimento/semana</div>
-              <div style="font-family:'General Sans',sans-serif;font-size:22px;font-weight:700;color:var(--offwhite);letter-spacing:-0.02em">R$ 481</div>
-            </div>
+            <div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Investimento/semana</div><div style="font-family:'General Sans',sans-serif;font-size:22px;font-weight:700;color:var(--offwhite);letter-spacing:-0.02em">R$ 504</div></div>
             <div style="height:1px;background:var(--border)"></div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-              <div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Taxa de clique</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--red)">0,34%</div></div>
-              <div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Leads/semana</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--red)">64</div></div>
-              <div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Custo por lead</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--offwhite)">R$ 7,52</div></div>
-              <div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Do alvo</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--red)">32%</div></div>
-            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Repetição</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--red)">3,9</div></div><div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Leads/semana</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--red)">67</div></div><div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Custo por lead</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--offwhite)">R$ 7,49</div></div><div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Do alvo</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--red)">34%</div></div></div>
           </div>
-          <div style="margin-top:18px;padding:10px 12px;background:var(--red-dim);border-radius:var(--radius);font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);line-height:1.5">
-            ⚠ É onde a conta está. Sem material novo, tende a piorar
-          </div>
+          <div style="margin-top:18px;padding:10px 12px;background:var(--red-dim);border-radius:var(--radius);font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);line-height:1.5">⚠ É exatamente onde a conta está. Nenhuma configuração mudou desde maio</div>
         </div>
-
         <div class="reveal" style="background:var(--grafite2);border:1px solid var(--border);border-top:2px solid var(--cobre);border-radius:var(--radius-lg);padding:28px 24px">
           <div style="font-family:'Satoshi',sans-serif;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--cobre);margin-bottom:4px;font-weight:700">Base · recomendado</div>
-          <div style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin-bottom:20px;line-height:1.5">Copy com data, endereço e horário · base de 15 a 20 anúncios · mesma verba</div>
+          <div style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin-bottom:20px;line-height:1.5">Públicos consolidados · filtro de interesses removido · pós-clique arrumado</div>
           <div style="display:flex;flex-direction:column;gap:14px">
-            <div>
-              <div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Investimento/semana</div>
-              <div style="font-family:'General Sans',sans-serif;font-size:22px;font-weight:700;color:var(--offwhite);letter-spacing:-0.02em">R$ 481</div>
-            </div>
+            <div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Investimento/semana</div><div style="font-family:'General Sans',sans-serif;font-size:22px;font-weight:700;color:var(--offwhite);letter-spacing:-0.02em">R$ 700</div></div>
             <div style="height:1px;background:var(--border)"></div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-              <div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Taxa de clique</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--cobre-lt)">1,00%</div></div>
-              <div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Leads/semana</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--offwhite)">~191</div></div>
-              <div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Custo por lead</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--cobre-lt)">R$ 2,52</div></div>
-              <div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Do alvo</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--cobre-lt)">96%</div></div>
-            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Repetição</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--cobre)">2,5</div></div><div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Leads/semana</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--cobre)">192</div></div><div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Custo por lead</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--green)">R$ 3,65</div></div><div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Do alvo</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--cobre)">96%</div></div></div>
           </div>
-          <div style="margin-top:18px;padding:10px 12px;background:var(--cobre-dim);border-radius:var(--radius);font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);line-height:1.5">
-            Sem aumentar um real. Exige turmas com data para anunciar
-          </div>
+          <div style="margin-top:18px;padding:10px 12px;background:var(--cobre-dim);border-radius:var(--radius);font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);line-height:1.5">Nenhum criativo novo é obrigatório para chegar aqui. São três mudanças de configuração e uma de atendimento</div>
         </div>
-
         <div class="reveal" style="background:var(--grafite2);border:1px solid var(--border);border-top:2px solid var(--green);border-radius:var(--radius-lg);padding:28px 24px">
           <div style="font-family:'Satoshi',sans-serif;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--green);margin-bottom:4px;font-weight:700">Meta</div>
-          <div style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin-bottom:20px;line-height:1.5">O do cenário base + calendário de turmas itinerantes + verba no teto</div>
+          <div style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin-bottom:20px;line-height:1.5">O cenário base, com teto de repetição fixado em 2 vezes por pessoa</div>
           <div style="display:flex;flex-direction:column;gap:14px">
-            <div>
-              <div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Investimento/semana</div>
-              <div style="font-family:'General Sans',sans-serif;font-size:22px;font-weight:700;color:var(--offwhite);letter-spacing:-0.02em">R$ 700</div>
-            </div>
+            <div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Investimento/semana</div><div style="font-family:'General Sans',sans-serif;font-size:22px;font-weight:700;color:var(--offwhite);letter-spacing:-0.02em">R$ 700</div></div>
             <div style="height:1px;background:var(--border)"></div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-              <div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Taxa de clique</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--green)">1,00%</div></div>
-              <div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Leads/semana</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--green)">~278</div></div>
-              <div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Custo por lead</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--green)">R$ 2,52</div></div>
-              <div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Do alvo</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--green)">139%</div></div>
-            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Repetição</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--green)">2,0</div></div><div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Leads/semana</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--green)">240</div></div><div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Custo por lead</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--green)">R$ 2,92</div></div><div><div style="font-family:'Satoshi',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:3px;font-weight:500">Do alvo</div><div style="font-family:'Satoshi',sans-serif;font-size:18px;font-weight:700;color:var(--green)">120%</div></div></div>
           </div>
-          <div style="margin-top:18px;padding:10px 12px;background:var(--green-dim);border-radius:var(--radius);font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);line-height:1.5">
-            É o patamar de jul/2025 — 251/semana. Dentro do teto combinado
-          </div>
+          <div style="margin-top:18px;padding:10px 12px;background:var(--green-dim);border-radius:var(--radius);font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);line-height:1.5">É o patamar de julho/2025 (247/semana a R$ 2,63) — sem turma itinerante, só no Rio do Sul</div>
         </div>
-
       </div>
 
-      <div class="insight-box dark-box reveal" style="border-left-color:var(--cobre);background:var(--cobre-dim)">
-        <div class="insight-title">A ressalva que decide se o número se confirma</div>
+      <div class="insight-box green-box reveal" style="margin-bottom:14px">
+        <div class="insight-title">O que exatamente custa 200 por semana</div>
         <div class="insight-body">
-          Os cenários Base e Meta assumem taxa de clique de 1%. <strong>A conta já entregou isso duas vezes:</strong>
-          em 2025 com o modelo de turma datada (1,42%) e em 2026 com as peças de melhor copy (0,85% a 1,58%).
-          Não é extrapolação — é o próprio histórico.<br/><br/>
-          <strong>Mas há uma condição que não é de mídia:</strong> o que fez o anúncio de 2025 ser barato era ele
-          anunciar <strong>um evento real, com data, endereço e horário</strong>. Se a operação hoje só roda turma
-          contínua em Rio do Sul, <strong>parte desse ganho não volta só mexendo em anúncio</strong> — volta junto
-          com o calendário de turmas.<br/><br/>
-          O cenário Base ainda é alcançável sem turma itinerante, usando data de turma em Rio do Sul e uma base
-          criativa maior. <strong>O cenário Meta depende do calendário.</strong>
+          Fixando o alvo em 200 e perguntando ao modelo quanto de verba ele pede:<br/><br/>
+          • Com o passo pós-clique arrumado e repetição em <strong>2,0</strong> → <strong>R$ 584 por semana</strong>. Sobra do teto.<br/>
+          • Com o passo pós-clique arrumado e repetição em <strong>2,5</strong> → <strong>R$ 730 por semana</strong>. R$ 30 acima do teto.<br/>
+          • <strong>Sem arrumar o passo pós-clique</strong> → <strong>R$ 959 por semana</strong>. 37% acima do teto.<br/><br/>
+          <strong>É esta terceira linha que define a prioridade.</strong> Levar a taxa de clique→conversa
+          de 32,7% de volta para 43% — patamar em que a conta já esteve em março deste ano — é o que
+          decide se 200 por semana cabe ou não cabe no orçamento combinado. E essa taxa não se conserta
+          com mídia.
+        </div>
+      </div>
+
+      <div class="insight-box dark-box reveal">
+        <div class="insight-title">A ressalva honesta</div>
+        <div class="insight-body">
+          O modelo assume que as pessoas ainda não alcançadas da praça respondem como as já alcançadas.
+          <strong>Isso não é garantido</strong> — a plataforma tende a entregar primeiro para quem tem mais
+          chance de reagir, então a segunda metade do público costuma render um pouco menos que a primeira.<br/><br/>
+          Por isso o número honesto é uma <strong>faixa: entre 150 e 240 conversas por semana</strong> no
+          cenário Base, não um ponto. O piso dessa faixa ainda é <strong>mais que o dobro</strong> do que a
+          conta entrega hoje — e chega lá com a verba que já está aprovada.
         </div>
       </div>
     </section>
@@ -1433,35 +1503,73 @@
         <h2 class="section-title">O plano</h2>
       </div>
 
-      <div class="insight-box dark-box reveal" style="border-left-color:var(--cobre);background:var(--cobre-dim);margin-bottom:14px">
-        <div class="insight-title">O que vamos fazer — nas próximas duas semanas</div>
+      <div class="insight-box red-box reveal" style="margin-bottom:14px">
+        <div class="insight-title">A ordem importa — e ela começa pela estrutura, não pela verba</div>
         <div class="insight-body">
-          <strong>1 · Religar os quatro anúncios bons que estão parados — esta semana.</strong>
+          <strong>Subir a verba antes de consolidar os públicos piora a conta.</strong> Dinheiro novo entrando
+          numa estrutura sobreposta compra mais repetição, não mais pessoas — que é exatamente o que já
+          aconteceu entre maio e agosto: o investimento se manteve em torno de R$ 2.300 por mês e o
+          resultado caiu de 89 para 67 por semana.<br/><br/>
+          Por isso os quatro primeiros itens não pedem um real a mais.
+        </div>
+      </div>
+
+      <div class="insight-box dark-box reveal" style="border-left-color:var(--cobre);background:var(--cobre-dim);margin-bottom:14px">
+        <div class="insight-title">Sem verba nova — esta semana</div>
+        <div class="insight-body">
+          <strong>1 · Consolidar os seis públicos em dois — até 05/09.</strong>
+          Acaba com a sobreposição de 1,84× medida em agosto. Sozinha, esta mudança leva a repetição de
+          3,9 para perto de 2,5 e o resultado de 67 para ~105 por semana, com a mesma verba.<br/><br/>
+          <strong>2 · Remover o filtro de interesses de máquina — até 05/09.</strong>
+          Passa o público disponível de 111 mil para 367 mil pessoas, sem sair do Rio do Sul.
+          As campanhas rodam em Advantage+, que trata interesse como sugestão — o filtro está limitando
+          sem estar protegendo.<br/><br/>
+          <strong>3 · Fixar teto de repetição em 2 vezes por pessoa — até 05/09.</strong>
+          É o que impede a estrutura de voltar a empilhar sozinha conforme a entrega amadurece.<br/><br/>
+          <strong>4 · Reescrever a mensagem que abre o WhatsApp — até 08/09.</strong>
+          A taxa de clique→conversa está em 32,7%, o pior número da série; já foi 43% em março e 52% em
+          novembro. <strong>Esta é a alavanca que decide se 200 cabe no orçamento</strong> — sem ela, 200
+          por semana custa R$ 959 e estoura o teto. Vamos alinhar o texto pré-preenchido com a promessa
+          de cada anúncio, em vez de uma saudação genérica para todos.
+        </div>
+      </div>
+
+      <div class="insight-box dark-box reveal" style="margin-bottom:14px">
+        <div class="insight-title">Com verba — depois que a estrutura estiver de pé</div>
+        <div class="insight-body">
+          <strong>5 · Religar os quatro anúncios bons que estão parados — 08/09.</strong>
           Fizeram 63 conversas a R$ 5,90 em julho e foram desligados sem nunca terem perdido desempenho.
-          É a reposição mais barata que existe: já estão prontos, e levam a base de 7 para 11 peças.
-          Sem custo de produção e sem aumento de verba.<br/><br/>
-          <strong>2 · Reescrever a copy no formato datado — esta semana.</strong>
-          Data da próxima turma na primeira linha, endereço do local, horário e vagas limitadas para aquela data.
-          É a mudança que separa 0,34% de 1,42% de taxa de clique, e é a de maior impacto do plano.
-          Depende de recebermos as datas.<br/><br/>
-          <strong>3 · Separar as campanhas que disputam o mesmo público — até 10/09.</strong>
-          Hoje são cinco campanhas competindo pela mesma região, e a conta entrega cerca de 72% do orçamento
-          que está armado. Consolidar libera entrega sem colocar um real a mais.<br/><br/>
-          <strong>4 · Subir dois vídeos novos por semana, com verba controlada — a partir de 08/09.</strong>
-          A conta mediu que 24 anúncios entregando custam R$ 6,86 e 4 custam R$ 9,00. A meta é chegar a
-          15–20 peças vivas e manter. Cada vídeo entra com teto próprio, para não repetir o erro de somar
-          verba no que já vence.
+          Levam a base de 7 para 11 peças, sem custo de produção.<br/><br/>
+          <strong>6 · Subir a verba para o teto de R$ 700/semana — 08/09,</strong> e não antes.
+          Com a estrutura consolidada, cada real novo compra pessoa nova em vez de repetição.<br/><br/>
+          <strong>7 · Dois vídeos novos por semana, com teto próprio — a partir de 15/09.</strong>
+          A conta mediu que 24 anúncios entregando custam R$ 6,86 e 4 custam R$ 9,00. Meta de 15 a 20
+          peças vivas. Cada vídeo entra com verba própria, para não somar dinheiro no que já vence.
+        </div>
+      </div>
+
+      <div class="insight-box green-box reveal" style="margin-bottom:14px">
+        <div class="insight-title">O que passamos a acompanhar toda semana</div>
+        <div class="insight-body">
+          Os relatórios desta conta vinham olhando CTR e custo por conversa. <strong>A seção 03 mostra que
+          o CTR não mede a qualidade do anúncio — mede quanta repetição foi comprada.</strong> A partir
+          desta semana o par que governa a conta passa a ser:<br/><br/>
+          <strong>· Pessoas diferentes alcançadas no mês</strong> — hoje 67 mil, alvo 140 a 150 mil<br/>
+          <strong>· Repetição por pessoa</strong> — hoje 3,9, alvo 2,0 a 2,5<br/><br/>
+          Os dois vêm da mesma fonte, toda semana, e são os únicos dois que precisam ser vigiados
+          para saber se o plano está funcionando.
         </div>
       </div>
 
       <div class="insight-box red-box reveal">
-        <div class="insight-title">⚠️ Antes de tudo isso: a conta está com R$ 4,46 de saldo</div>
+        <div class="insight-title">⚠️ Antes de qualquer um destes sete itens: a conta está com R$ 4,46</div>
         <div class="insight-body">
-          A conta é pré-paga e o saldo <strong>está praticamente zerado neste momento</strong> — ela vai parar de
-          entregar nas próximas horas se não houver aporte.<br/><br/>
-          Em agosto isso já aconteceu em <strong>4 dos 28 dias</strong>. Cada parada interrompe o aprendizado das
-          campanhas e derruba a semana. <strong>Nenhum plano de volume funciona com a entrega parando a cada 7 dias</strong> —
-          e este é o item mais urgente da lista, à frente de qualquer ajuste de anúncio.
+          A conta é pré-paga e o saldo <strong>está praticamente zerado neste momento</strong> — ela para
+          de entregar nas próximas horas se não houver aporte.<br/><br/>
+          Em agosto isso já aconteceu em <strong>4 dos 28 dias</strong> (01, 10, 19 e 28). Cada parada
+          interrompe o aprendizado e força a entrega a recomeçar pelas pessoas mais fáceis —
+          <strong>que são justamente as que já foram alcançadas.</strong> Ou seja: as paradas de saldo
+          alimentam diretamente o problema de repetição descrito neste documento.
         </div>
       </div>
     </section>
@@ -1476,12 +1584,12 @@
         <div class="context-item">
           <div class="context-num-wrap"><div class="context-num">1</div><div class="context-dot"></div></div>
           <div>
-            <div class="context-title">O calendário de turmas — é a alavanca de maior valor</div>
+            <div class="context-title">Manter saldo na conta — é o item mais urgente</div>
             <div class="context-body">
-              Datas, cidades, endereços e horários das próximas turmas. <strong>É o que transforma "matrículas abertas"
-              em "sexta-feira, 19/09, das 14h às 19h, no Sindicato dos Trabalhadores Rurais"</strong> —
-              e foi essa diferença que separou R$ 2,52 de R$ 7,52 por conversa.<br/>
-              Sem as datas, o cenário Base não sai do papel.
+              Hoje o saldo está em <strong>R$ 4,46</strong>. Para sustentar o cenário Base o aporte precisa
+              acompanhar <strong>R$ 700 por semana</strong>. Em agosto entraram R$ 2.400 no mês contra
+              R$ 3.010 previstos — 20% abaixo. <strong>Aporte irregular não é só perda de dias: é a causa
+              direta do problema de repetição</strong>, porque cada recomeço reentrega para quem já foi alcançado.
             </div>
           </div>
         </div>
@@ -1489,11 +1597,14 @@
         <div class="context-item">
           <div class="context-num-wrap"><div class="context-num">2</div><div class="context-dot"></div></div>
           <div>
-            <div class="context-title">Manter saldo na conta</div>
+            <div class="context-title">Quantas dessas conversas viram matrícula</div>
             <div class="context-body">
-              Hoje o saldo está em <strong>R$ 4,46</strong>. Para sustentar 200 conversas por semana o aporte precisa
-              acompanhar: <strong>R$ 700 por semana no cenário Meta</strong>. Em agosto entraram R$ 2.400 no mês,
-              contra R$ 3.010 previstos — 20% abaixo. <strong>Aporte irregular é hoje uma causa direta de perda de volume.</strong>
+              <strong>Esse número nunca foi medido.</strong> A conta otimiza custo por conversa há 13 meses
+              sem nenhum retorno de fechamento. Com ticket de R$ 1.500, bastaria pouco mais de
+              <strong>meio por cento</strong> das conversas virarem matrícula para a mídia se pagar — o que
+              sugere que a conta é muito lucrativa, mas isso é dedução, não medição.<br/>
+              <strong>Saber isso muda a conversa inteira:</strong> se a taxa for alta, 200 por semana é
+              conservador e quem precisa subir é o teto de R$ 700.
             </div>
           </div>
         </div>
@@ -1501,14 +1612,27 @@
         <div class="context-item">
           <div class="context-num-wrap"><div class="context-num">3</div><div class="context-dot"></div></div>
           <div>
-            <div class="context-title">Quantas dessas conversas viram matrícula</div>
+            <div class="context-title">O perfil do WhatsApp que recebe as conversas</div>
             <div class="context-body">
-              <strong>Esse número nunca foi medido.</strong> A conta otimiza custo por conversa há meses sem nenhum
-              retorno de fechamento. Com ticket de R$ 1.500, bastaria pouco mais de <strong>meio por cento</strong>
-              das conversas virarem matrícula para a mídia se pagar — o que sugere que a conta é muito lucrativa,
-              mas isso é dedução, não medição.<br/>
-              <strong>Saber isso muda a conversa inteira:</strong> se a taxa for alta, 200 por semana é conservador
-              e o teto de R$ 700 é que precisa subir.
+              O item 4 do plano é nosso, mas metade dele mora do seu lado: quem clica no anúncio cai numa
+              tela de WhatsApp com foto, nome e descrição do negócio antes de decidir se manda a mensagem.
+              <strong>Um terço das pessoas que clicam desiste nesse ponto.</strong><br/>
+              Precisamos ver essa tela como o cliente vê — foto, nome exibido e a descrição — para
+              entender onde os 10 pontos percentuais estão sendo perdidos.
+            </div>
+          </div>
+        </div>
+
+        <div class="context-item">
+          <div class="context-num-wrap"><div class="context-num">4</div><div class="context-dot"></div></div>
+          <div>
+            <div class="context-title">Data da próxima turma — útil, mas não é mais o gargalo</div>
+            <div class="context-body">
+              O modelo que a conta rodou em 2025 trazia data e local na primeira linha do anúncio, e isso
+              ajudava. <strong>Mas com os números certos essa alavanca é a quarta, não a primeira</strong> —
+              e o cenário Base chega a 192 por semana sem ela.<br/>
+              Se houver data de turma marcada, ela entra na copy e melhora o resultado. Se não houver,
+              <strong>o plano roda do mesmo jeito.</strong>
             </div>
           </div>
         </div>
@@ -1517,27 +1641,26 @@
       <div class="insight-box green-box reveal">
         <div class="insight-title">Em uma frase</div>
         <div class="insight-body">
-          <strong>200 leads por semana cabem no orçamento que já existe.</strong> A conta entregou 251 por semana em
-          julho de 2025 por R$ 660 semanais, e o leilão praticamente não mudou desde então.<br/><br/>
-          O que se perdeu no caminho não foi verba nem público — <strong>foi o anúncio que dava um motivo para a
-          pessoa agir hoje</strong>. Recuperar isso depende menos de mídia e mais de uma coisa simples:
-          <strong>ter a próxima turma marcada, com data, lugar e hora.</strong>
+          <strong>200 leads por semana cabem no Rio do Sul e cabem no orçamento de R$ 700 que já está combinado.</strong>
+          A praça tem 367 mil pessoas e a conta fala com 67 mil delas, quase quatro vezes cada.<br/><br/>
+          O que trava a conta hoje não é o tamanho da cidade, não é a falta de calendário e não é a verba.
+          <strong>É o dinheiro estar sendo gasto repetindo para as mesmas pessoas em vez de encontrar
+          as outras 300 mil.</strong> E consertar isso são três mudanças de configuração e uma mensagem reescrita.
         </div>
       </div>
     </section>
 
     <div style="padding:28px 64px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--grafite);flex-wrap:wrap;gap:10px">
       <div style="font-family:'Satoshi',sans-serif;font-size:10px;color:var(--muted2);font-weight:500;letter-spacing:0.06em">
-        Projeção · Aurelius · Como chegar a 200 leads por semana
+        Projeção · Aurelius · Como chegar a 200 leads por semana no Rio do Sul
       </div>
       <div style="font-family:'Inter',sans-serif;font-size:10px;color:var(--muted2)">
-        Meta Ads API · base 05/08 a 01/09/2026 · histórico desde jul/2025
+        Meta Ads API · base agosto/2026 · histórico de 13 meses · revisado em 02/09/2026
       </div>
     </div>
 
   </main>
 </div>
-
 <script>
   function irPara(id){ document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'}); }
   const secoes=['s1','s2','s3','s4','s5','s6','s7','s8'];
@@ -1577,20 +1700,46 @@
         muted='rgba(244,241,234,0.35)',gridC='rgba(244,241,234,0.06)';
   Chart.defaults.font.family="'Satoshi', sans-serif";
   Chart.defaults.color=muted;
+  const MESES=['jul/25','ago/25','set/25','out/25','nov/25','jan/26','fev/26','mar/26','abr/26','mai/26','jun/26','jul/26','ago/26'];
+  const FREQ=[2.50,2.41,2.47,1.98,2.04,3.02,4.06,3.72,4.28,4.23,3.65,4.56,3.91];
+  const CTR =[0.644,0.790,0.773,0.692,0.533,0.403,0.337,0.413,0.329,0.301,0.308,0.347,0.346];
+  const SEM =[247,237,162,86,106,38,49,111,74,89,77,77,67];
+  const tip={backgroundColor:'#0d1f32',titleColor:offwhite,bodyColor:'rgba(244,241,234,0.6)',
+             borderColor:'rgba(244,241,234,0.1)',borderWidth:1,padding:12,cornerRadius:6};
+
+  new Chart(document.getElementById('chartFreq'),{
+    data:{labels:MESES,datasets:[
+      {type:'bar',label:'Vezes que a mesma pessoa vê',data:FREQ,yAxisID:'y',
+       backgroundColor:FREQ.map(f=>f<3?'rgba(40,196,138,0.55)':'rgba(240,85,85,0.6)'),
+       borderRadius:4,barPercentage:0.6,order:2},
+      {type:'line',label:'Quantos clicam',data:CTR,yAxisID:'y1',borderColor:cobre,
+       backgroundColor:cobre,borderWidth:2.5,pointRadius:3,pointBackgroundColor:cobre,tension:0.3,order:1}]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:true,labels:{boxWidth:10,boxHeight:10,padding:14,font:{size:11}}},
+        tooltip:{...tip,callbacks:{label:c=>c.dataset.type==='line'
+          ?' clicam: '+c.raw.toFixed(3).replace('.',',')+'%'
+          :' vê '+c.raw.toFixed(2).replace('.',',')+' vezes'}}},
+      scales:{x:{grid:{color:gridC},ticks:{color:muted,font:{size:10}},border:{color:gridC}},
+        y:{position:'left',grid:{color:gridC},border:{color:gridC},min:0,max:5,
+           ticks:{color:muted,font:{size:10},callback:v=>v+'×'}},
+        y1:{position:'right',grid:{display:false},border:{color:gridC},min:0,max:0.9,
+           ticks:{color:cobre,font:{size:10},callback:v=>v.toFixed(1).replace('.',',')+'%'}}}}
+  });
+
   new Chart(document.getElementById('chartHist'),{
-    type:'bar',
-    data:{labels:['jul/25','ago/25','set/25','out/25','nov/25','ago/26'],
-      datasets:[{label:'Conversas no mês',data:[1093,1051,694,383,454,266],
-        backgroundColor:['rgba(40,196,138,0.85)','rgba(40,196,138,0.7)','rgba(40,196,138,0.55)',
-                         'rgba(40,196,138,0.4)','rgba(40,196,138,0.4)','rgba(240,85,85,0.8)'],
-        borderRadius:4,barPercentage:0.62}]},
+    data:{labels:MESES,datasets:[
+      {type:'bar',label:'Conversas por semana',data:SEM,
+       backgroundColor:SEM.map(v=>v>=200?'rgba(40,196,138,0.85)':v>=100?'rgba(40,196,138,0.45)':'rgba(240,85,85,0.7)'),
+       borderRadius:4,barPercentage:0.62,order:2},
+      {type:'line',label:'Alvo: 200 por semana',data:MESES.map(()=>200),borderColor:cobre,
+       borderWidth:1.5,borderDash:[5,4],pointRadius:0,fill:false,order:1}]},
     options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},
-        tooltip:{backgroundColor:'#0d1f32',titleColor:offwhite,bodyColor:'rgba(244,241,234,0.6)',
-          borderColor:'rgba(244,241,234,0.1)',borderWidth:1,padding:12,cornerRadius:6,
-          callbacks:{label:c=>' '+c.raw.toLocaleString('pt-BR')+' conversas'}}},
-      scales:{x:{grid:{color:gridC},ticks:{color:muted,font:{size:11}},border:{color:gridC}},
-              y:{grid:{color:gridC},ticks:{color:muted,font:{size:11}},border:{color:gridC}}}}
+      plugins:{legend:{display:true,labels:{boxWidth:10,boxHeight:10,padding:14,font:{size:11},
+          filter:i=>i.datasetIndex===1}},
+        tooltip:{...tip,filter:i=>i.datasetIndex===0,
+          callbacks:{label:c=>' '+c.raw+' conversas por semana'}}},
+      scales:{x:{grid:{color:gridC},ticks:{color:muted,font:{size:10}},border:{color:gridC}},
+        y:{grid:{color:gridC},ticks:{color:muted,font:{size:10}},border:{color:gridC},beginAtZero:true}}}
   });
 </script>
 </body>
